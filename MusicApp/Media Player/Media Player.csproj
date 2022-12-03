@@ -259,6 +259,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="image\button.png" />
+    <Content Include="image\download.png" />
+    <Content Include="image\forward-button.png" />
+    <Content Include="image\mute.png" />
+    <Content Include="image\pause.png" />
+    <Content Include="image\play-button.png" />
+    <Content Include="image\rewind-button.png" />
+    <Content Include="image\update-arrows.png" />
+    <Content Include="image\volume.png" />
     <Content Include="music\Cam Nhan - Seachains.mp3" />
     <Content Include="music\Chay Ngay Di Onionn Remix_ - Onionn_ Son.mp3" />
     <Content Include="music\Chua Tung Vi Nhau - Karik_ Vu Phung Tien.mp3" />

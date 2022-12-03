@@ -10,17 +10,22 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
+using System.Media;
+using System.Numerics;
+using Image = System.Drawing.Image;
 
 namespace Media_Player
 {
     public partial class Form1 : Form
     {
+        SoundPlayer looping;
         string SongName;
         string Author;
         public Form1()
         {
             InitializeComponent();
             trackVolume.Value = 50;
+            label10.Visible = false;
         }
         #region SlideBar
         private void btnHome_Click(object sender, EventArgs e)
@@ -72,7 +77,7 @@ namespace Media_Player
                 SongName = bunifuDataGridView1.Rows[e.RowIndex].Cells["Title"].FormattedValue.ToString();
                 Author = bunifuDataGridView1.Rows[e.RowIndex].Cells["Author"].FormattedValue.ToString();
                 label3.Text = SongName + " - " + Author + " Playing...";
-            }
+            }   
             runmp3();
         }
 
@@ -80,7 +85,7 @@ namespace Media_Player
         //playmusic
         private void runmp3()
         {
-            PlayMusic.URL = "C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".mp3";
+            PlayMusic.URL = "C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav";
             PlayMusic.Ctlcontrols.play();
         }
 
@@ -110,9 +115,11 @@ namespace Media_Player
             {
                 PlayMusic.Ctlcontrols.pause();
                 flagMusic = false;
-            }    
+                btnPlay.Image = Image.FromFile(@"C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\image\pause.png");
+            }
             else 
             {
+                btnPlay.Image = Image.FromFile(@"C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\image\play-button.png");
                 PlayMusic.Ctlcontrols.play();
                 flagMusic = true;
             }    
@@ -136,12 +143,29 @@ namespace Media_Player
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-
+            int Prev = bunifuDataGridView1.CurrentRow.Index - 1;
+            if (Prev < bunifuDataGridView1.Rows.Count)
+            {
+                this.bunifuDataGridView1.CurrentCell = bunifuDataGridView1.Rows[Prev].Cells[bunifuDataGridView1.CurrentCell.ColumnIndex];
+                SongName = bunifuDataGridView1.Rows[Prev].Cells["Title"].FormattedValue.ToString();
+                Author = bunifuDataGridView1.Rows[Prev].Cells["Author"].FormattedValue.ToString();
+                label3.Text = SongName + " - " + Author + " Playing...";
+                runmp3();
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-
+            int Next = bunifuDataGridView1.CurrentRow.Index + 1;
+            if (Next < bunifuDataGridView1.Rows.Count)
+            {
+                this.bunifuDataGridView1.CurrentCell = bunifuDataGridView1.Rows[Next].Cells[bunifuDataGridView1.CurrentCell.ColumnIndex];
+                SongName = bunifuDataGridView1.Rows[Next].Cells["Title"].FormattedValue.ToString();
+                Author = bunifuDataGridView1.Rows[Next].Cells["Author"].FormattedValue.ToString();
+                label3.Text = SongName + " - " + Author + " Playing...";
+                runmp3();
+            }    
+            
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
@@ -149,8 +173,22 @@ namespace Media_Player
 
         }
 
+        bool flagloop = false;
         private void btnLoop_Click(object sender, EventArgs e)
         {
+            if(flagloop == false)
+            {
+                looping = new SoundPlayer(@"C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav");
+                looping.PlayLooping();
+                flagloop = true;
+                label10.Visible = true;
+            }
+            else
+            {
+                looping = null;
+                flagloop = false;
+                label10.Visible = false;
+            }
 
         }
 
@@ -161,9 +199,11 @@ namespace Media_Player
             {
                 PlayMusic.settings.volume = 0;
                 flagMute = true;
+                btnMuteVolume.Image = Image.FromFile("C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\image\\mute.png");
             }
             else
             {
+                btnMuteVolume.Image = Image.FromFile("C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\image\\volume.png");
                 PlayMusic.settings.volume = volume;
                 flagMute = false;
             }
