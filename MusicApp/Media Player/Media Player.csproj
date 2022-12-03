@@ -258,6 +258,71 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="music\Cam Nhan - Seachains.mp3" />
+    <Content Include="music\Chay Ngay Di Onionn Remix_ - Onionn_ Son.mp3" />
+    <Content Include="music\Chua Tung Vi Nhau - Karik_ Vu Phung Tien.mp3" />
+    <Content Include="music\ConMuaNgangQua-SonTungMTP-2944936.mp3" />
+    <Content Include="music\Có chơi có chịu.mp3" />
+    <Content Include="music\DduduDdudu-BLACKPINK-6291998.mp3" />
+    <Content Include="music\Different World - Alan Walker_ K-391_ So.mp3" />
+    <Content Include="music\Dynamic Duo - HIEUTHUHAI ft HURRYKNG.mp3" />
+    <Content Include="music\Em Cua Ngay Hom Qua - Son Tung M-TP.mp3" />
+    <Content Include="music\Extremes - Alan Walker_ Trevor Daniel.mp3" />
+    <Content Include="music\Faded - Alan Walker.mp3" />
+    <Content Include="music\Ignite - K-391_ Alan Walker_ Julie Berga.mp3" />
+    <Content Include="music\Khoc Mot Minh - Karik_ Windy Quyen.mp3" />
+    <Content Include="music\Khu Tao Song - Wowy_ Karik.mp3" />
+    <Content Include="music\Lac Troi - Son Tung M-TP.mp3" />
+    <Content Include="music\MammaMia-HIEUTHUHAIHURRYKNGMANBONegavRex-7288215.mp3" />
+    <Content Include="music\Nang Am Xa Dan - Son Tung M-TP.mp3" />
+    <Content Include="music\Ngon Nen - Coldzy.mp3" />
+    <Content Include="music\PinkVenom-BLACKPINK-7802564.mp3" />
+    <Content Include="music\Senorita - Shawn Mendes_ Camila Cabello.mp3" />
+    <Content Include="music\Shut Down - BlackPink.mp3" />
+    <Content Include="music\The Drum - Alan Walker.mp3" />
+    <Content Include="music\Typa Girl - BlackPink.mp3" />
+    <Content Include="music\Vi Me Anh Bat Chia Tay - Miu Le_ Karik_.mp3" />
+    <Content Include="Song.xml" />
+    <Content Include="ListSong.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MediaPlayer">
+      <Guid>{22D6F304-B0F6-11D0-94AB-0080C74C7E95}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

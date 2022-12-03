@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<songs>
+	<song>
+		<STT>1</STT>
+		<Title>Có chơi có chịu</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>2</STT>
+		<Title>Vì mẹ anh bắt chia tay</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>3</STT>
+		<Title>Chưa từng vì nhau</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>4</STT>
+		<Title>Khóc một mình</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>5</STT>
+		<Title>Khu tao sống</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>6</STT>
+		<Title>Lạc trôi</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>7</STT>
+		<Title>Em của ngày hôm qua</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>8</STT>
+		<Title>Nắng ấm xa dần</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>9</STT>
+		<Title>Cơn mưa ngang qua</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>10</STT>
+		<Title>Chạy ngay đi</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+	</song>
+	<song>
+		<STT>11</STT>
+		<Title>Extremes</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+	</song>
+	<song>
+		<STT>12</STT>
+		<Title>The Drum</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+	</song>
+	<song>
+		<STT>13</STT>
+		<Title>Faded</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+	</song>
+	<song>
+		<STT>14</STT>
+		<Title>Ignite</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+	</song>
+	<song>
+		<STT>15</STT>
+		<Title>Different World</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+	</song>
+	<song>
+		<STT>16</STT>
+		<Title>DYNAMIC DOU</Title>
+		<Author>HIEUTHUHAI</Author>
+		<Genre>Rap</Genre>
+	</song>
+	<song>
+		<STT>17</STT>
+		<Title>Mamma Mia</Title>
+		<Author>HIEUTHUHAI</Author>
+		<Genre>Rap</Genre>
+	</song>
+	<song>
+		<STT>18</STT>
+		<Title>Back to hometown</Title>
+		<Author>Sol7</Author>
+		<Genre>Rap</Genre>
+	</song>
+	<song>
+		<STT>19</STT>
+		<Title>Cảm nhận</Title>
+		<Author>Seachains</Author>
+		<Genre>Rap</Genre>
+	</song>
+	<song>
+		<STT>20</STT>
+		<Title>Ngọn nến</Title>
+		<Author>Coldzy</Author>
+		<Genre>Rap</Genre>
+	</song>
+	<song>
+		<STT>21</STT>
+		<Title>Pink Venom</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+	</song>
+	<song>
+		<STT>22</STT>
+		<Title>Typa Girl</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+	</song>
+	<song>
+		<STT>23</STT>
+		<Title>Shut Down</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+	</song>
+	<song>
+		<STT>24</STT>
+		<Title>DDU-DU DDU-DU</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+	</song>
+	<song>
+		<STT>25</STT>
+		<Title>How You Like That</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+	</song>
+	<song>
+		<STT>26</STT>
+		<Title>Senorita</Title>
+		<Author>Camila Cabello</Author>
+		<Genre>US/UK</Genre>
+	</song>
+	<song>
+		<STT>27</STT>
+		<Title>Mood</Title>
+		<Author>Iann Dior</Author>
+		<Genre>US/UK</Genre>
+	</song>
+	<song>
+		<STT>28</STT>
+		<Title>MONTERO</Title>
+		<Author>Lil Nas X</Author>
+		<Genre>US/UK</Genre>
+	</song>
+	<song>
+		<STT>29</STT>
+		<Title>BAM BAM</Title>
+		<Author>Camila Cabello</Author>
+		<Genre>US/UK</Genre>
+	</song>
+	<song>
+		<STT>30</STT>
+		<Title>Mery Chirsmast</Title>
+		<Author>Michael Jackson</Author>
+		<Genre>US/UK</Genre>
+	</song>
+</songs>

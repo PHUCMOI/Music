@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<songs>
+	<song>
+		<STT>1</STT>
+		<image>data/image/cochoicochiu.jpg</image>
+		<Title>Có chơi có chịu</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/cochoicochiu.mp3"</url>
+	</song>
+	<song>
+		<STT>2</STT>
+		<image>"data/image/vimeanhbatchiatay.jpg"</image>
+		<Title>Vì mẹ anh bắt chia tay</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/vimeanhbatchiatay.mp3"</url>
+	</song>
+	<song>
+		<STT>3</STT>
+		<image>"data/image/chuatungvinhau.jpg"</image>
+		<Title>Chưa từng vì nhau</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/chuatungvinhau.mp3"</url>
+	</song>
+	<song>
+		<STT>4</STT>
+		<image>"data/image/khocmotminh.jpg"</image>
+		<Title>Khóc một mình</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/khocmotminh.mp3"</url>
+	</song>
+	<song>
+		<STT>5</STT>
+		<image>"data/image/khutaosong.jpg"</image>
+		<Title>Khu tao sống</Title>
+		<Author>Karik</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/khutaosong.mp3"</url>
+	</song>
+	<song>
+		<STT>5</STT>
+		<image>"data/image/lactroi.jpg"</image>
+		<Title>Lạc trôi</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/lactroi.mp3"</url>
+	</song>
+	<song>
+		<STT>6</STT>
+		<image>"data/image/emcuangayhomqua.jpg"</image>
+		<Title>Em của ngày hôm qua</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/emcuangayhomqua.mp3"</url>
+	</song>
+	<song>
+		<STT>7</STT>
+		<image>"data/image/nangamxadan.jpg"</image>
+		<Title>Nắng ấm xa dần</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/nangamxadan.mp3"</url>
+	</song>
+	<song>
+		<STT>8</STT>
+		<image>"data/image/conmuangangqua.jpg"</image>
+		<Title>Cơn mưa ngang qua</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/conmuangangqua.mp3"</url>
+	</song>
+	<song>
+		<STT>9</STT>
+		<image>"data/image/chayngaydi.jpg"</image>
+		<Title>Chạy ngay đi</Title>
+		<Author>Sơn Tùng MTP</Author>
+		<Genre>Việt Nam</Genre>
+		<url>"data/music/chayngaydi.mp3"</url>
+	</song>
+	<song>
+		<STT>10</STT>
+		<image>"data/image/Extremes.jpg"</image>
+		<Title>Extremes</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+		<url>"data/music/extremes.mp3"</url>
+	</song>
+	<song>
+		<STT>11</STT>
+		<image>"data/image/thedrum.jpg"</image>
+		<Title>The Drum</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+		<url>"data/music/thedrum.mp3"</url>
+	</song>
+	<song>
+		<STT>12</STT>
+		<image>"data/image/faded.jpg"</image>
+		<Title>Faded</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+		<url>"data/music/faded.mp3"</url>
+	</song>
+	<song>
+		<STT>13</STT>
+		<image>"data/image/ignite.jpg"</image>
+		<Title>Ignite</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+		<url>"data/music/ignite.mp3"</url>
+	</song>
+	<song>
+		<STT>14</STT>
+		<image>"data/image/differentworld.jpg"</image>
+		<Title>Different World</Title>
+		<Author>Alan Walker</Author>
+		<Genre>EDM</Genre>
+		<url>"data/music/differentworld.mp3"</url>
+	</song>
+	<song>
+		<STT>15</STT>
+		<image>"data/image/dynamicdou.jpg"</image>
+		<Title>DYNAMIC DOU</Title>
+		<Author>HIEUTHUHAI</Author>
+		<Genre>Rap</Genre>
+		<url>"data/music/dynamicdou.mp3"</url>
+	</song>
+	<song>
+		<STT>16</STT>
+		<image>"data/image/mammamia.jpg"</image>
+		<Title>Mamma Mia</Title>
+		<Author>HIEUTHUHAI</Author>
+		<Genre>Rap</Genre>
+		<url>"data/music/mammamia.mp3"</url>
+	</song>
+	<song>
+		<STT>17</STT>
+		<image>"data/image/backtohometown.jpg"</image>
+		<Title>Back to hometown</Title>
+		<Author>Sol7</Author>
+		<Genre>Rap</Genre>
+		<url>"data/music/backtohometown.mp3"</url>
+	</song>
+	<song>
+		<STT>18</STT>
+		<image>"data/image/camnhan.jpg"</image>
+		<Title>Cảm nhận</Title>
+		<Author>Seachains</Author>
+		<Genre>Rap</Genre>
+		<url>"data/music/camnhan.mp3"</url>
+	</song>
+	<song>
+		<STT>19</STT>
+		<image>"data/image/ngonnen.jpg"</image>
+		<Title>Ngọn nến</Title>
+		<Author>Coldzy</Author>
+		<Genre>Rap</Genre>
+		<url>"data/music/ngonnen.mp3"</url>
+	</song>
+	<song>
+		<STT>20</STT>
+		<image>"data/image/pinkvenom.jpg"</image>
+		<Title>Pink Venom</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+		<url>"data/music/pinkvenom.mp3"</url>
+	</song>
+	<song>
+		<STT>21</STT>
+		<image>"data/image/typagirl.jpg"</image>
+		<Title>Typa Girl</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+		<url>"data/music/typagirl.mp3"</url>
+	</song>
+	<song>
+		<STT>22</STT>
+		<image>"data/image/shutdown.jpg"</image>
+		<Title>Shut Down</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+		<url>"data/music/shutdown.mp3"</url>
+	</song>
+	<song>
+		<STT>23</STT>
+		<image>"data/image/ddududdudu.jpg"</image>
+		<Title>DDU-DU DDU-DU</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+		<url>"data/music/ddududdudu.mp3"</url>
+	</song>
+	<song>
+		<STT>24</STT>
+		<image>"data/image/howyoulikethat.jpg"</image>
+		<Title>How You Like That</Title>
+		<Author>BLACKPINK</Author>
+		<Genre>Hàn Quốc</Genre>
+		<url>"data/music/howyoulikethat.mp3"</url>
+	</song>
+	<song>
+		<STT>25</STT>
+		<image>"data/image/Senorita.jpg"</image>
+		<Title>Senorita</Title>
+		<Author>Camila Cabello</Author>
+		<Genre>US/UK</Genre>
+		<url>"data/music/senorita.mp3"</url>
+	</song>
+	<song>
+		<STT>26</STT>
+		<image>"data/image/mood.jpg"</image>
+		<Title>Mood</Title>
+		<Author>Iann Dior</Author>
+		<Genre>US/UK</Genre>
+		<url>"data/music/mood.mp3"</url>
+	</song>
+	<song>
+		<STT>27</STT>
+		<image>"data/image/MONTERO.jpg"</image>
+		<Title>MONTERO</Title>
+		<Author>Lil Nas X</Author>
+		<Genre>US/UK</Genre>
+		<url>"data/music/montero.mp3"</url>
+	</song>
+	<song>
+		<STT>28</STT>
+		<image>"data/image/bambam.jpg"</image>
+		<Title>BAM BAM</Title>
+		<Author>Camila Cabello</Author>
+		<Genre>US/UK</Genre>
+		<url>"data/music/bambam.mp3"</url>
+	</song>
+	<song>
+		<STT>29</STT>
+		<image>"data/image/mery.jpg"</image>
+		<Title>Mery Chirsmast</Title>
+		<Author>Michael Jackson</Author>
+		<Genre>US/UK</Genre>
+		<url>"data/music/merychirsmast.mp3"</url>
+	</song>
+</songs>
