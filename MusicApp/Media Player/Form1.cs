@@ -13,6 +13,7 @@ using System.IO;
 using System.Media;
 using System.Numerics;
 using Image = System.Drawing.Image;
+using System.Reflection;
 
 namespace Media_Player
 {
@@ -77,7 +78,8 @@ namespace Media_Player
                 SongName = bunifuDataGridView1.Rows[e.RowIndex].Cells["Title"].FormattedValue.ToString();
                 Author = bunifuDataGridView1.Rows[e.RowIndex].Cells["Author"].FormattedValue.ToString();
                 label3.Text = SongName + " - " + Author + " Playing...";
-            }   
+            }
+            bunifuPages1.SetPage(0) ;
             runmp3();
         }
 
@@ -139,8 +141,6 @@ namespace Media_Player
         }
 
 
-        #endregion
-
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             int Prev = bunifuDataGridView1.CurrentRow.Index - 1;
@@ -168,9 +168,25 @@ namespace Media_Player
             
         }
 
+
         private void btnDownload_Click(object sender, EventArgs e)
         {
+            Stream resource = Properties.Resources.ResourceManager.GetStream(SongName);
+            if (resource == null)
+            {
+                throw new ArgumentException();
+            }
+            Stream output = File.OpenWrite(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Sound.wav");
+            /*if (!System.IO.Directory.Exists(@"C:\C#"))
+            {
+                System.IO.Directory.CreateDirectory(@"C:\C#");
+            }
 
+            //Write the file
+            using (System.IO.StreamWriter outfile = new System.IO.StreamWriter(@"C:\C#\" + SongName + ".wav"))
+            {
+                outfile.Write(@"C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav");
+            }*/
         }
 
         bool flagloop = false;
@@ -208,5 +224,7 @@ namespace Media_Player
                 flagMute = false;
             }
         }
+        #endregion
+
     }
 }
