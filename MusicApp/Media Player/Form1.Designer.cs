@@ -36,6 +36,10 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -53,6 +57,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.txt_Search = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnExit = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuFormDock1 = new Bunifu.UI.WinForms.BunifuFormDock();
@@ -69,9 +74,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
+            this.pnlControl = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTrackVolumeValue = new System.Windows.Forms.Label();
@@ -86,6 +90,7 @@
             this.btnPrevious = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuHSlider1 = new Bunifu.UI.WinForms.BunifuHSlider();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlSlideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHeader.SuspendLayout();
@@ -96,7 +101,6 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,7 +180,7 @@
             this.btnSetting.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
             this.btnSetting.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSetting.BackgroundImage")));
             this.btnSetting.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSetting.ButtonText = "Settings";
+            this.btnSetting.ButtonText = "History";
             this.btnSetting.ButtonTextMarginLeft = 0;
             this.btnSetting.ColorContrastOnClick = 45;
             this.btnSetting.ColorContrastOnHover = 45;
@@ -211,7 +215,7 @@
             this.btnSetting.IdleIconLeftImage = null;
             this.btnSetting.IdleIconRightImage = null;
             this.btnSetting.IndicateFocus = false;
-            this.btnSetting.Location = new System.Drawing.Point(42, 630);
+            this.btnSetting.Location = new System.Drawing.Point(42, 420);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSetting.OnDisabledState.BorderRadius = 1;
@@ -735,13 +739,92 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.Controls.Add(this.txt_Search);
             this.pnlHeader.Controls.Add(this.label3);
             this.pnlHeader.Controls.Add(this.btnExit);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(235, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(865, 53);
+            this.pnlHeader.Size = new System.Drawing.Size(1017, 53);
             this.pnlHeader.TabIndex = 1;
+            // 
+            // txt_Search
+            // 
+            this.txt_Search.AcceptsReturn = false;
+            this.txt_Search.AcceptsTab = false;
+            this.txt_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Search.AnimationSpeed = 200;
+            this.txt_Search.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txt_Search.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txt_Search.AutoSizeHeight = true;
+            this.txt_Search.BackColor = System.Drawing.Color.Transparent;
+            this.txt_Search.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txt_Search.BackgroundImage")));
+            this.txt_Search.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txt_Search.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txt_Search.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txt_Search.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txt_Search.BorderRadius = 5;
+            this.txt_Search.BorderThickness = 1;
+            this.txt_Search.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txt_Search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_Search.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txt_Search.DefaultText = "";
+            this.txt_Search.FillColor = System.Drawing.Color.White;
+            this.txt_Search.HideSelection = true;
+            this.txt_Search.IconLeft = null;
+            this.txt_Search.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_Search.IconPadding = 10;
+            this.txt_Search.IconRight = ((System.Drawing.Image)(resources.GetObject("txt_Search.IconRight")));
+            this.txt_Search.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_Search.Lines = new string[0];
+            this.txt_Search.Location = new System.Drawing.Point(645, 11);
+            this.txt_Search.MaxLength = 32767;
+            this.txt_Search.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txt_Search.Modified = false;
+            this.txt_Search.Multiline = false;
+            this.txt_Search.Name = "txt_Search";
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txt_Search.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txt_Search.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txt_Search.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Silver;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txt_Search.OnIdleState = stateProperties4;
+            this.txt_Search.Padding = new System.Windows.Forms.Padding(3);
+            this.txt_Search.PasswordChar = '\0';
+            this.txt_Search.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txt_Search.PlaceholderText = "Enter text";
+            this.txt_Search.ReadOnly = false;
+            this.txt_Search.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Search.SelectedText = "";
+            this.txt_Search.SelectionLength = 0;
+            this.txt_Search.SelectionStart = 0;
+            this.txt_Search.ShortcutsEnabled = true;
+            this.txt_Search.Size = new System.Drawing.Size(309, 36);
+            this.txt_Search.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txt_Search.TabIndex = 11;
+            this.txt_Search.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_Search.TextMarginBottom = 0;
+            this.txt_Search.TextMarginLeft = 3;
+            this.txt_Search.TextMarginTop = 1;
+            this.txt_Search.TextPlaceholder = "Enter text";
+            this.txt_Search.UseSystemPasswordChar = false;
+            this.txt_Search.WordWrap = true;
+            this.txt_Search.TextChange += new System.EventHandler(this.txt_Search_TextChange);
+            this.txt_Search.TextChanged += new System.EventHandler(this.txt_Search_TextChanged);
             // 
             // label3
             // 
@@ -774,7 +857,7 @@
             this.btnExit.ImageSize = new System.Drawing.Size(30, 30);
             this.btnExit.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnExit.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnExit.InitialImage")));
-            this.btnExit.Location = new System.Drawing.Point(808, 5);
+            this.btnExit.Location = new System.Drawing.Point(960, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Rotation = 0;
             this.btnExit.ShowActiveImage = true;
@@ -841,12 +924,12 @@
             this.bunifuPages1.Location = new System.Drawing.Point(235, 53);
             this.bunifuPages1.Multiline = true;
             this.bunifuPages1.Name = "bunifuPages1";
-            this.bunifuPages1.Page = this.tabPage3;
-            this.bunifuPages1.PageIndex = 2;
-            this.bunifuPages1.PageName = "tabPage3";
-            this.bunifuPages1.PageTitle = "Home";
+            this.bunifuPages1.Page = this.tabPage2;
+            this.bunifuPages1.PageIndex = 0;
+            this.bunifuPages1.PageName = "tabPage2";
+            this.bunifuPages1.PageTitle = "Playing";
             this.bunifuPages1.SelectedIndex = 0;
-            this.bunifuPages1.Size = new System.Drawing.Size(865, 577);
+            this.bunifuPages1.Size = new System.Drawing.Size(1017, 577);
             this.bunifuPages1.TabIndex = 2;
             animation1.AnimateOnlyDifferences = false;
             animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
@@ -880,7 +963,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(857, 548);
+            this.tabPage2.Size = new System.Drawing.Size(1009, 548);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Playing";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -888,7 +971,7 @@
             // PlayMusic
             // 
             this.PlayMusic.Enabled = true;
-            this.PlayMusic.Location = new System.Drawing.Point(822, 10);
+            this.PlayMusic.Location = new System.Drawing.Point(975, 20);
             this.PlayMusic.Name = "PlayMusic";
             this.PlayMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("PlayMusic.OcxState")));
             this.PlayMusic.Size = new System.Drawing.Size(22, 20);
@@ -897,6 +980,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkGray;
@@ -908,6 +992,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(413, 221);
@@ -918,6 +1003,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGray;
@@ -929,6 +1015,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(413, 117);
@@ -939,6 +1026,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkGray;
@@ -950,6 +1038,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(413, 20);
@@ -960,9 +1049,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(11, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(340, 340);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 24;
             this.pictureBox2.TabStop = false;
             // 
@@ -972,7 +1062,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(857, 548);
+            this.tabPage1.Size = new System.Drawing.Size(1009, 548);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Explore";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1036,50 +1126,39 @@
             this.bunifuDataGridView1.RowHeadersWidth = 51;
             this.bunifuDataGridView1.RowTemplate.Height = 40;
             this.bunifuDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.bunifuDataGridView1.Size = new System.Drawing.Size(838, 536);
+            this.bunifuDataGridView1.Size = new System.Drawing.Size(986, 536);
             this.bunifuDataGridView1.TabIndex = 0;
             this.bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.bunifuDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuDataGridView1_CellClick);
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.pnlControl);
             this.tabPage3.Location = new System.Drawing.Point(4, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(857, 548);
+            this.tabPage3.Size = new System.Drawing.Size(1009, 548);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Home";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // pnlControl
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(381, 153);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 16);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "label11";
+            this.pnlControl.AutoScroll = true;
+            this.pnlControl.Location = new System.Drawing.Point(4, 7);
+            this.pnlControl.Name = "pnlControl";
+            this.pnlControl.Size = new System.Drawing.Size(1000, 535);
+            this.pnlControl.TabIndex = 0;
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label12);
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(857, 548);
+            this.tabPage4.Size = new System.Drawing.Size(1009, 548);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(505, 123);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "label12";
             // 
             // panel1
             // 
@@ -1099,13 +1178,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(235, 630);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(865, 120);
+            this.panel1.Size = new System.Drawing.Size(1017, 120);
             this.panel1.TabIndex = 3;
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(161, 49);
+            this.label10.Location = new System.Drawing.Point(220, 49);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(14, 16);
             this.label10.TabIndex = 22;
@@ -1113,9 +1193,10 @@
             // 
             // lblTrackVolumeValue
             // 
+            this.lblTrackVolumeValue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTrackVolumeValue.AutoSize = true;
             this.lblTrackVolumeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrackVolumeValue.Location = new System.Drawing.Point(796, 13);
+            this.lblTrackVolumeValue.Location = new System.Drawing.Point(949, 17);
             this.lblTrackVolumeValue.Name = "lblTrackVolumeValue";
             this.lblTrackVolumeValue.Size = new System.Drawing.Size(52, 25);
             this.lblTrackVolumeValue.TabIndex = 21;
@@ -1123,6 +1204,7 @@
             // 
             // lblCurrentTime
             // 
+            this.lblCurrentTime.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblCurrentTime.AutoSize = true;
             this.lblCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentTime.Location = new System.Drawing.Point(10, 60);
@@ -1133,9 +1215,10 @@
             // 
             // lblTotalTime
             // 
+            this.lblTotalTime.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTotalTime.AutoSize = true;
             this.lblTotalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalTime.Location = new System.Drawing.Point(525, 60);
+            this.lblTotalTime.Location = new System.Drawing.Point(657, 60);
             this.lblTotalTime.Name = "lblTotalTime";
             this.lblTotalTime.Size = new System.Drawing.Size(51, 25);
             this.lblTotalTime.TabIndex = 19;
@@ -1149,7 +1232,7 @@
             this.btnLoop.AllowToggling = false;
             this.btnLoop.AllowZooming = true;
             this.btnLoop.AllowZoomingOnFocus = false;
-            this.btnLoop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnLoop.BackColor = System.Drawing.Color.Transparent;
             this.btnLoop.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnLoop.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnLoop.ErrorImage")));
@@ -1162,7 +1245,7 @@
             this.btnLoop.ImageSize = new System.Drawing.Size(30, 30);
             this.btnLoop.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnLoop.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnLoop.InitialImage")));
-            this.btnLoop.Location = new System.Drawing.Point(163, 49);
+            this.btnLoop.Location = new System.Drawing.Point(230, 49);
             this.btnLoop.Name = "btnLoop";
             this.btnLoop.Rotation = 0;
             this.btnLoop.ShowActiveImage = true;
@@ -1185,7 +1268,7 @@
             this.btnDownload.AllowToggling = false;
             this.btnDownload.AllowZooming = true;
             this.btnDownload.AllowZoomingOnFocus = false;
-            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDownload.BackColor = System.Drawing.Color.Transparent;
             this.btnDownload.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDownload.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.ErrorImage")));
@@ -1198,7 +1281,7 @@
             this.btnDownload.ImageSize = new System.Drawing.Size(30, 30);
             this.btnDownload.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnDownload.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.InitialImage")));
-            this.btnDownload.Location = new System.Drawing.Point(387, 49);
+            this.btnDownload.Location = new System.Drawing.Point(454, 49);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Rotation = 0;
             this.btnDownload.ShowActiveImage = true;
@@ -1224,6 +1307,7 @@
             this.trackVolume.AllowScrollKeysDetection = true;
             this.trackVolume.AllowScrollOptionsMenu = true;
             this.trackVolume.AllowShrinkingOnFocusLost = false;
+            this.trackVolume.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.trackVolume.BackColor = System.Drawing.Color.Transparent;
             this.trackVolume.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("trackVolume.BackgroundImage")));
             this.trackVolume.BindingContainer = null;
@@ -1234,7 +1318,7 @@
             this.trackVolume.DurationBeforeShrink = 2000;
             this.trackVolume.ElapsedColor = System.Drawing.Color.DodgerBlue;
             this.trackVolume.LargeChange = 10;
-            this.trackVolume.Location = new System.Drawing.Point(650, 12);
+            this.trackVolume.Location = new System.Drawing.Point(800, 12);
             this.trackVolume.Maximum = 100;
             this.trackVolume.Minimum = 0;
             this.trackVolume.MinimumSize = new System.Drawing.Size(0, 31);
@@ -1269,7 +1353,7 @@
             this.btnMuteVolume.AllowToggling = false;
             this.btnMuteVolume.AllowZooming = true;
             this.btnMuteVolume.AllowZoomingOnFocus = false;
-            this.btnMuteVolume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMuteVolume.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMuteVolume.BackColor = System.Drawing.Color.Transparent;
             this.btnMuteVolume.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnMuteVolume.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnMuteVolume.ErrorImage")));
@@ -1282,7 +1366,7 @@
             this.btnMuteVolume.ImageSize = new System.Drawing.Size(30, 30);
             this.btnMuteVolume.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnMuteVolume.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMuteVolume.InitialImage")));
-            this.btnMuteVolume.Location = new System.Drawing.Point(594, 3);
+            this.btnMuteVolume.Location = new System.Drawing.Point(744, 6);
             this.btnMuteVolume.Name = "btnMuteVolume";
             this.btnMuteVolume.Rotation = 0;
             this.btnMuteVolume.ShowActiveImage = true;
@@ -1305,7 +1389,7 @@
             this.btnNext.AllowToggling = false;
             this.btnNext.AllowZooming = true;
             this.btnNext.AllowZoomingOnFocus = false;
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNext.BackColor = System.Drawing.Color.Transparent;
             this.btnNext.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNext.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnNext.ErrorImage")));
@@ -1318,7 +1402,7 @@
             this.btnNext.ImageSize = new System.Drawing.Size(30, 30);
             this.btnNext.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnNext.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnNext.InitialImage")));
-            this.btnNext.Location = new System.Drawing.Point(331, 49);
+            this.btnNext.Location = new System.Drawing.Point(398, 49);
             this.btnNext.Name = "btnNext";
             this.btnNext.Rotation = 0;
             this.btnNext.ShowActiveImage = true;
@@ -1341,7 +1425,7 @@
             this.btnPlay.AllowToggling = false;
             this.btnPlay.AllowZooming = true;
             this.btnPlay.AllowZoomingOnFocus = false;
-            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPlay.BackColor = System.Drawing.Color.Transparent;
             this.btnPlay.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPlay.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnPlay.ErrorImage")));
@@ -1354,7 +1438,7 @@
             this.btnPlay.ImageSize = new System.Drawing.Size(30, 30);
             this.btnPlay.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnPlay.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPlay.InitialImage")));
-            this.btnPlay.Location = new System.Drawing.Point(275, 49);
+            this.btnPlay.Location = new System.Drawing.Point(342, 49);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Rotation = 0;
             this.btnPlay.ShowActiveImage = true;
@@ -1377,7 +1461,7 @@
             this.btnPrevious.AllowToggling = false;
             this.btnPrevious.AllowZooming = true;
             this.btnPrevious.AllowZoomingOnFocus = false;
-            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPrevious.BackColor = System.Drawing.Color.Transparent;
             this.btnPrevious.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPrevious.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnPrevious.ErrorImage")));
@@ -1390,7 +1474,7 @@
             this.btnPrevious.ImageSize = new System.Drawing.Size(30, 30);
             this.btnPrevious.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnPrevious.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnPrevious.InitialImage")));
-            this.btnPrevious.Location = new System.Drawing.Point(219, 49);
+            this.btnPrevious.Location = new System.Drawing.Point(286, 49);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Rotation = 0;
             this.btnPrevious.ShowActiveImage = true;
@@ -1416,6 +1500,7 @@
             this.bunifuHSlider1.AllowScrollKeysDetection = true;
             this.bunifuHSlider1.AllowScrollOptionsMenu = true;
             this.bunifuHSlider1.AllowShrinkingOnFocusLost = false;
+            this.bunifuHSlider1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.bunifuHSlider1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuHSlider1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuHSlider1.BackgroundImage")));
             this.bunifuHSlider1.BindingContainer = null;
@@ -1438,7 +1523,7 @@
             this.bunifuHSlider1.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.bunifuHSlider1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.bunifuHSlider1.ShrinkSizeLimit = 3;
-            this.bunifuHSlider1.Size = new System.Drawing.Size(576, 31);
+            this.bunifuHSlider1.Size = new System.Drawing.Size(705, 31);
             this.bunifuHSlider1.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.bunifuHSlider1.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
             this.bunifuHSlider1.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
@@ -1446,7 +1531,7 @@
             this.bunifuHSlider1.TabIndex = 0;
             this.bunifuHSlider1.ThumbColor = System.Drawing.Color.DodgerBlue;
             this.bunifuHSlider1.ThumbFillColor = System.Drawing.SystemColors.Control;
-            this.bunifuHSlider1.ThumbLength = 57;
+            this.bunifuHSlider1.ThumbLength = 69;
             this.bunifuHSlider1.ThumbMargin = 1;
             this.bunifuHSlider1.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
             this.bunifuHSlider1.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
@@ -1458,21 +1543,27 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1100, 750);
+            this.ClientSize = new System.Drawing.Size(1252, 750);
             this.Controls.Add(this.bunifuPages1);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlSlideBar);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.pnlSlideBar.ResumeLayout(false);
             this.pnlSlideBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1486,9 +1577,6 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -1540,9 +1628,10 @@
         private System.Windows.Forms.Label lblTrackVolumeValue;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label12;
+        private Bunifu.UI.WinForms.BunifuTextBox txt_Search;
+        private System.Windows.Forms.FlowLayoutPanel pnlControl;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

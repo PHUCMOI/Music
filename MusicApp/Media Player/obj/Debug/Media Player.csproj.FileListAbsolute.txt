@@ -98,3 +98,6 @@ C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media Player.
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\Interop.WMPLib.dll
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\button.png
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Component.MusicItem.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\Có chơi có chịu.jpg

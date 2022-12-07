@@ -14,11 +14,20 @@ using System.Media;
 using System.Numerics;
 using Image = System.Drawing.Image;
 using System.Reflection;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Media_Player.Component;
 
 namespace Media_Player
 {
+    
     public partial class Form1 : Form
     {
+        //XML
+        public static XmlDocument xmlDoc = new XmlDocument();
+        public static XmlNodeList nodeList;
+
+        
+        DataTable dataTableListSong = new DataTable();
         SoundPlayer looping;
         string SongName;
         string Author;
@@ -27,22 +36,33 @@ namespace Media_Player
             InitializeComponent();
             trackVolume.Value = 50;
             label10.Visible = false;
+
+            DataSet dataset = new DataSet();
+
+            dataset.ReadXml("..//..//ListSong.xml");
+            bunifuDataGridView1.DataSource = dataset.Tables[0];
+
+            dataTableListSong = dataset.Tables[0];
+
+            /*dataTableListSong.Columns.Add("STT", typeof(int));
+                dataTableListSong.Columns.Add("SongName", typeof(string));
+                dataTableListSong.Columns.Add("Author", typeof(string));
+                dataTableListSong.Columns.Add("Genre", typeof(string));*/
+
+            
         }
+
         #region SlideBar
         private void btnHome_Click(object sender, EventArgs e)
         {
             indicator.Top = btnHome.Top + 11;
-            bunifuPages1.SetPage(0);
+            bunifuPages1.SetPage(3);
         }
 
         private void btnExplore_Click(object sender, EventArgs e)
         {
             indicator.Top = btnExplore.Top + 11;
             bunifuPages1.SetPage(1);
-
-            DataSet dataset = new DataSet();
-            dataset.ReadXml("..//..//ListSong.xml");
-            bunifuDataGridView1.DataSource = dataset.Tables[0];
         }
 
         private void btnAlbums_Click(object sender, EventArgs e)
@@ -54,7 +74,7 @@ namespace Media_Player
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             indicator.Top = btnPlaylist.Top + 11;
-            bunifuPages1.SetPage(3);
+            bunifuPages1.SetPage(0);
         }
         #endregion
 
@@ -171,13 +191,13 @@ namespace Media_Player
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            Stream resource = Properties.Resources.ResourceManager.GetStream(SongName);
+            /*Stream resource = Properties.Resources.ResourceManager.GetStream(SongName);
             if (resource == null)
             {
                 throw new ArgumentException();
             }
-            Stream output = File.OpenWrite(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Sound.wav");
-            /*if (!System.IO.Directory.Exists(@"C:\C#"))
+            Stream output = File.OpenWrite(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Sound.wav");*/
+            if (!System.IO.Directory.Exists(@"C:\C#"))
             {
                 System.IO.Directory.CreateDirectory(@"C:\C#");
             }
@@ -186,7 +206,7 @@ namespace Media_Player
             using (System.IO.StreamWriter outfile = new System.IO.StreamWriter(@"C:\C#\" + SongName + ".wav"))
             {
                 outfile.Write(@"C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav");
-            }*/
+            }
         }
 
         bool flagloop = false;
@@ -226,5 +246,79 @@ namespace Media_Player
         }
         #endregion
 
+
+        //search
+        private void txt_Search_TextChange(object sender, EventArgs e)
+        {
+           /* string searchValue = txt_Search.Text;
+            try
+            {
+                var result_songname = from col in dataTableListSong.AsEnumerable()
+                                      where col[1].ToString().Contains(searchValue) 
+                                      select col;
+                *//*var result_songname = from row in dataTableListSong.AsEnumerable()
+                                      where row[1].ToString().Contains(searchValue)
+                                      select row;*//*
+                if (result_songname.Count() == 0)
+                {
+                    label11.Text = "Không có kết quả";
+                    bunifuDataGridView2.DataSource = dataTableListSong;
+                }
+                else
+                {
+                    bunifuDataGridView2.DataSource = result_songname.CopyToDataTable();
+                    label11.Text = "có";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
+        }
+
+
+        //Search
+        private void txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                musicitem.Visible = musicitem.lblSongName.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
+            }    
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Stop();
+            bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
+        }
+
+        //
+        public void AddMusicItem(string name, string author, string album, string image)
+        {
+            pnlControl.Controls.Add(new MusicItem()
+            {
+                SongName = name,
+                Author = author,
+                Album = album,
+                ImageSong = Image.FromFile("..//..//image/" + image)
+            });
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            xmlDoc.Load("..//..//ListSong.xml");
+
+            nodeList = xmlDoc.DocumentElement.SelectNodes("/songs/" + "/song");
+            for (int i = 0; i < 30; i++)
+            {
+                AddMusicItem(nodeList[i].SelectSingleNode("Title").InnerText,
+                    nodeList[i].SelectSingleNode("Author").InnerText,
+                    nodeList[i].SelectSingleNode("Genre").InnerText,
+                    nodeList[i].SelectSingleNode("Title").InnerText + ".jpg");
+            }
+        }
     }
 }
+;

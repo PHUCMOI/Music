@@ -223,6 +223,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MusicItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MusicItem.Designer.cs">
+      <DependentUpon>MusicItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MusicItem.resx">
+      <DependentUpon>MusicItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,15 +268,60 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="image\button.png" />
+    <Content Include="image\1.jpg" />
+    <Content Include="image\1628687.png" />
+    <Content Include="image\Back to hometown.jpg" />
+    <Content Include="image\Bam Bam.jpg" />
+    <Content Include="image\button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="image\Chưa từng vì nhau.jpg" />
+    <Content Include="image\Chạy ngay đi.jpg" />
+    <Content Include="image\Có chơi có chịu.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="image\Cơn mưa ngang qua.jpg" />
+    <Content Include="image\Cảm nhận.jpg" />
+    <Content Include="image\DDU-DU DDU-DU.jpg" />
+    <Content Include="image\Different world.jpg" />
     <Content Include="image\download.png" />
+    <Content Include="image\DYNAMIC DOU.jpg" />
+    <Content Include="image\Em của ngày hôm qua.jpg" />
+    <Content Include="image\Extremes.jpg" />
+    <Content Include="image\Faded.jpg" />
     <Content Include="image\forward-button.png" />
+    <Content Include="image\heart.png" />
+    <Content Include="image\How you like that.jpg" />
+    <Content Include="image\icon_history.jpg" />
+    <Content Include="image\ico_playlist.jpg" />
+    <Content Include="image\ico_topmusic.png" />
+    <Content Include="image\Ignite.jpg" />
+    <Content Include="image\karik.jpg" />
+    <Content Include="image\karik.png" />
+    <Content Include="image\Khu tao sống.jpg" />
+    <Content Include="image\Khóc một mình.jpg" />
+    <Content Include="image\logo.jpg" />
+    <Content Include="image\Lạc trôi.jpg" />
+    <Content Include="image\MAMMA MIA.jpg" />
+    <Content Include="image\Mery Chirsmast.jpg" />
+    <Content Include="image\MONTERO.jpg" />
+    <Content Include="image\Mood.jpg" />
+    <Content Include="image\mtp.png" />
     <Content Include="image\mute.png" />
+    <Content Include="image\Ngọn nến.jpg" />
+    <Content Include="image\Nắng ấm xa dần.jpg" />
     <Content Include="image\pause.png" />
+    <Content Include="image\Pink venom.jpg" />
     <Content Include="image\play-button.png" />
     <Content Include="image\rewind-button.png" />
+    <Content Include="image\Senorita.jpg" />
+    <Content Include="image\Shut down.jpg" />
+    <Content Include="image\star-starry-sky-night-background.jpg" />
+    <Content Include="image\The drum.jpg" />
+    <Content Include="image\Typa girl.jpg" />
     <Content Include="image\update-arrows.png" />
     <Content Include="image\volume.png" />
+    <Content Include="image\Vì mẹ anh bắt chia tay.jpg" />
     <Content Include="music\Cam Nhan - Seachains.mp3" />
     <Content Include="music\Chay Ngay Di Onionn Remix_ - Onionn_ Son.mp3" />
     <Content Include="music\Chua Tung Vi Nhau - Karik_ Vu Phung Tien.mp3" />
