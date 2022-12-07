@@ -16,6 +16,7 @@ using Image = System.Drawing.Image;
 using System.Reflection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Media_Player.Component;
+using System.Security.Cryptography;
 
 namespace Media_Player
 {
@@ -29,6 +30,7 @@ namespace Media_Player
         
         DataTable dataTableListSong = new DataTable();
         SoundPlayer looping;
+
         string SongName;
         string Author;
         public Form1()
@@ -285,7 +287,11 @@ namespace Media_Player
             {
                 var musicitem = (MusicItem)item;
                 musicitem.Visible = musicitem.lblSongName.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
-            }    
+                if (musicitem.Visible == false)
+                    musicitem.Visible = musicitem.lblAuthor.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
+                else if (musicitem.Visible == false)
+                    musicitem.Visible = musicitem.lblAlbum.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
