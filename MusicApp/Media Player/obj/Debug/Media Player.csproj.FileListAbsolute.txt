@@ -101,3 +101,4 @@ C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\AxInterop.WMP
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\button.png
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Component.MusicItem.resources
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\Có chơi có chịu.jpg
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form2.resources

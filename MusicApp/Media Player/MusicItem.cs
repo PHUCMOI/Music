@@ -27,5 +27,15 @@ namespace Media_Player.Component
         {
             OnSelect?.Invoke(this, e);
         }
+
+        private void MusicItem_MouseMove(object sender, MouseEventArgs e)
+        {
+            BackColor = Color.LightGray;
+        }
+
+        private void MusicItem_MouseLeave(object sender, EventArgs e)
+        {
+            BackColor = Color.Transparent;
+        }
     }
 }

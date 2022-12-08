@@ -27,44 +27,48 @@ namespace Media_Player
         public static XmlDocument xmlDoc = new XmlDocument();
         public static XmlNodeList nodeList;
 
+        string SongName;
         
         DataTable dataTableListSong = new DataTable();
         SoundPlayer looping;
 
-        string SongName;
-        string Author;
+        Random random = new Random();
+        List<int> randlist; 
+        public void Random()
+        {
+            /*for (int i = 0; i < 10; i++)
+            {
+                int j = random.Next(0, 10);
+                randlist[i] = j; 
+            }     */
+        }
+
         public Form1()
         {
             InitializeComponent();
             trackVolume.Value = 50;
-            label10.Visible = false;
+            
 
             DataSet dataset = new DataSet();
 
             dataset.ReadXml("..//..//ListSong.xml");
-            bunifuDataGridView1.DataSource = dataset.Tables[0];
 
             dataTableListSong = dataset.Tables[0];
 
-            /*dataTableListSong.Columns.Add("STT", typeof(int));
-                dataTableListSong.Columns.Add("SongName", typeof(string));
-                dataTableListSong.Columns.Add("Author", typeof(string));
-                dataTableListSong.Columns.Add("Genre", typeof(string));*/
-
-            
+            bunifuPages1.SetPage(0);
         }
 
         #region SlideBar
         private void btnHome_Click(object sender, EventArgs e)
         {
             indicator.Top = btnHome.Top + 11;
-            bunifuPages1.SetPage(3);
+            bunifuPages1.SetPage(1);
         }
 
         private void btnExplore_Click(object sender, EventArgs e)
         {
             indicator.Top = btnExplore.Top + 11;
-            bunifuPages1.SetPage(1);
+            bunifuPages1.SetPage(0);
         }
 
         private void btnAlbums_Click(object sender, EventArgs e)
@@ -76,7 +80,7 @@ namespace Media_Player
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             indicator.Top = btnPlaylist.Top + 11;
-            bunifuPages1.SetPage(0);
+            bunifuPages1.SetPage(3);
         }
         #endregion
 
@@ -89,25 +93,15 @@ namespace Media_Player
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "No Playing...";
+            Random();
+            picBack1.Image = Image.FromFile("..//..//image/back1.jpg");
+            picBack2.Image = Image.FromFile("..//..//image/back2.jpg");
+            picBack3.Image = Image.FromFile("..//..//image/back3.jpg");
+
         }
 
-        #region ListMusic
-        private void bunifuDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (bunifuDataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                bunifuDataGridView1.CurrentRow.Selected = true;
-                SongName = bunifuDataGridView1.Rows[e.RowIndex].Cells["Title"].FormattedValue.ToString();
-                Author = bunifuDataGridView1.Rows[e.RowIndex].Cells["Author"].FormattedValue.ToString();
-                label3.Text = SongName + " - " + Author + " Playing...";
-            }
-            bunifuPages1.SetPage(0) ;
-            runmp3();
-        }
-
-        #endregion
         //playmusic
-        private void runmp3()
+        public void runmp3(string SongName)
         {
             PlayMusic.URL = "C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav";
             PlayMusic.Ctlcontrols.play();
@@ -165,7 +159,7 @@ namespace Media_Player
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int Prev = bunifuDataGridView1.CurrentRow.Index - 1;
+            /*int Prev = bunifuDataGridView1.CurrentRow.Index - 1;
             if (Prev < bunifuDataGridView1.Rows.Count)
             {
                 this.bunifuDataGridView1.CurrentCell = bunifuDataGridView1.Rows[Prev].Cells[bunifuDataGridView1.CurrentCell.ColumnIndex];
@@ -173,20 +167,12 @@ namespace Media_Player
                 Author = bunifuDataGridView1.Rows[Prev].Cells["Author"].FormattedValue.ToString();
                 label3.Text = SongName + " - " + Author + " Playing...";
                 runmp3();
-            }
+            }*/
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int Next = bunifuDataGridView1.CurrentRow.Index + 1;
-            if (Next < bunifuDataGridView1.Rows.Count)
-            {
-                this.bunifuDataGridView1.CurrentCell = bunifuDataGridView1.Rows[Next].Cells[bunifuDataGridView1.CurrentCell.ColumnIndex];
-                SongName = bunifuDataGridView1.Rows[Next].Cells["Title"].FormattedValue.ToString();
-                Author = bunifuDataGridView1.Rows[Next].Cells["Author"].FormattedValue.ToString();
-                label3.Text = SongName + " - " + Author + " Playing...";
-                runmp3();
-            }    
+           
             
         }
 
@@ -219,13 +205,13 @@ namespace Media_Player
                 looping = new SoundPlayer(@"C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav");
                 looping.PlayLooping();
                 flagloop = true;
-                label10.Visible = true;
+               //label10.Visible = true;
             }
             else
             {
                 looping = null;
                 flagloop = false;
-                label10.Visible = false;
+                //label10.Visible = false;
             }
 
         }
@@ -289,7 +275,7 @@ namespace Media_Player
                 musicitem.Visible = musicitem.lblSongName.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
                 if (musicitem.Visible == false)
                     musicitem.Visible = musicitem.lblAuthor.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
-                else if (musicitem.Visible == false)
+                if (musicitem.Visible == false)
                     musicitem.Visible = musicitem.lblAlbum.Text.ToLower().ToLower().Contains(txt_Search.Text.Trim().ToLower());
             }
         }
@@ -303,27 +289,36 @@ namespace Media_Player
         //
         public void AddMusicItem(string name, string author, string album, string image)
         {
-            pnlControl.Controls.Add(new MusicItem()
+            var m = new MusicItem()
             {
                 SongName = name,
                 Author = author,
                 Album = album,
                 ImageSong = Image.FromFile("..//..//image/" + image)
-            });
+            };
+
+            pnlControl.Controls.Add(m);
+
+            m.OnSelect += (ss, ee) =>
+            {
+                var musicitem = (MusicItem)ss;
+                SongName = m.lblSongName.Text;
+                picPlaying.Image = m.ImageSong;
+                runmp3(SongName);
+                label3.Text = SongName + " - " + m.lblAuthor.Text + " Playing...";
+            };
+
+
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            xmlDoc.Load("..//..//ListSong.xml");
+           
+        }
 
-            nodeList = xmlDoc.DocumentElement.SelectNodes("/songs/" + "/song");
-            for (int i = 0; i < 30; i++)
-            {
-                AddMusicItem(nodeList[i].SelectSingleNode("Title").InnerText,
-                    nodeList[i].SelectSingleNode("Author").InnerText,
-                    nodeList[i].SelectSingleNode("Genre").InnerText,
-                    nodeList[i].SelectSingleNode("Title").InnerText + ".jpg");
-            }
+        private void txt_Search_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
