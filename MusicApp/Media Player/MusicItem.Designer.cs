@@ -47,7 +47,7 @@
             this.bunifuLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel1.CursorType = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel1.Location = new System.Drawing.Point(128, 15);
+            this.bunifuLabel1.Location = new System.Drawing.Point(25, 256);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(125, 31);
@@ -63,7 +63,7 @@
             this.lblSongName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSongName.CursorType = System.Windows.Forms.Cursors.Hand;
             this.lblSongName.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.lblSongName.Location = new System.Drawing.Point(269, 15);
+            this.lblSongName.Location = new System.Drawing.Point(166, 256);
             this.lblSongName.Name = "lblSongName";
             this.lblSongName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblSongName.Size = new System.Drawing.Size(156, 31);
@@ -79,7 +79,7 @@
             this.bunifuLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel3.CursorType = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel3.Location = new System.Drawing.Point(128, 65);
+            this.bunifuLabel3.Location = new System.Drawing.Point(25, 293);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(55, 31);
@@ -95,7 +95,7 @@
             this.lblAuthor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblAuthor.CursorType = System.Windows.Forms.Cursors.Hand;
             this.lblAuthor.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.lblAuthor.Location = new System.Drawing.Point(194, 65);
+            this.lblAuthor.Location = new System.Drawing.Point(91, 293);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblAuthor.Size = new System.Drawing.Size(50, 31);
@@ -111,7 +111,7 @@
             this.bunifuLabel5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel5.CursorType = System.Windows.Forms.Cursors.Hand;
             this.bunifuLabel5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel5.Location = new System.Drawing.Point(770, 15);
+            this.bunifuLabel5.Location = new System.Drawing.Point(25, 330);
             this.bunifuLabel5.Name = "bunifuLabel5";
             this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel5.Size = new System.Drawing.Size(78, 31);
@@ -127,7 +127,7 @@
             this.lblAlbum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblAlbum.CursorType = System.Windows.Forms.Cursors.Hand;
             this.lblAlbum.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.lblAlbum.Location = new System.Drawing.Point(859, 15);
+            this.lblAlbum.Location = new System.Drawing.Point(114, 330);
             this.lblAlbum.Name = "lblAlbum";
             this.lblAlbum.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblAlbum.Size = new System.Drawing.Size(95, 31);
@@ -158,7 +158,7 @@
             this.btnNext.ImageSize = new System.Drawing.Size(30, 30);
             this.btnNext.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnNext.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnNext.InitialImage")));
-            this.btnNext.Location = new System.Drawing.Point(873, 52);
+            this.btnNext.Location = new System.Drawing.Point(359, 16);
             this.btnNext.Name = "btnNext";
             this.btnNext.Rotation = 0;
             this.btnNext.ShowActiveImage = true;
@@ -177,13 +177,13 @@
             this.picSong.AllowFocused = false;
             this.picSong.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picSong.AutoSizeHeight = true;
-            this.picSong.BorderRadius = 49;
+            this.picSong.BorderRadius = 112;
             this.picSong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSong.Image = ((System.Drawing.Image)(resources.GetObject("picSong.Image")));
             this.picSong.IsCircle = true;
-            this.picSong.Location = new System.Drawing.Point(9, 3);
+            this.picSong.Location = new System.Drawing.Point(91, 16);
             this.picSong.Name = "picSong";
-            this.picSong.Size = new System.Drawing.Size(98, 98);
+            this.picSong.Size = new System.Drawing.Size(224, 224);
             this.picSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picSong.TabIndex = 0;
             this.picSong.TabStop = false;
@@ -195,6 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lblAlbum);
             this.Controls.Add(this.bunifuLabel5);
@@ -204,7 +205,7 @@
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.picSong);
             this.Name = "MusicItem";
-            this.Size = new System.Drawing.Size(974, 115);
+            this.Size = new System.Drawing.Size(430, 389);
             this.Click += new System.EventHandler(this.picSong_Click);
             this.MouseLeave += new System.EventHandler(this.MusicItem_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MusicItem_MouseMove);

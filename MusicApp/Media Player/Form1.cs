@@ -17,6 +17,7 @@ using System.Reflection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Media_Player.Component;
 using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Media_Player
 {
@@ -28,59 +29,68 @@ namespace Media_Player
         public static XmlNodeList nodeList;
 
         string SongName;
-        
-        DataTable dataTableListSong = new DataTable();
         SoundPlayer looping;
 
         Random random = new Random();
-        List<int> randlist; 
-        public void Random()
-        {
-            /*for (int i = 0; i < 10; i++)
-            {
-                int j = random.Next(0, 10);
-                randlist[i] = j; 
-            }     */
-        }
+        List<int> randlist = new List<int>();
+        int index = 0;
+        
 
         public Form1()
         {
             InitializeComponent();
             trackVolume.Value = 50;
-            
+
+            while(index < 20)
+            {
+                {
+                    int randomNum = random.Next(1, 100);
+                    randlist.Add(randomNum);
+                    if (index == 5)
+                    {
+                        break;
+                    }
+                    index++;
+                }
+            }    
 
             DataSet dataset = new DataSet();
 
             dataset.ReadXml("..//..//ListSong.xml");
 
-            dataTableListSong = dataset.Tables[0];
 
-            bunifuPages1.SetPage(0);
+            //bunifuPages1.SetPage(0);
         }
 
         #region SlideBar
         private void btnHome_Click(object sender, EventArgs e)
         {
             indicator.Top = btnHome.Top + 11;
-            bunifuPages1.SetPage(1);
+            pnlControl.Show();
+            //bunifuPages1.SetPage(1);
         }
 
         private void btnExplore_Click(object sender, EventArgs e)
         {
             indicator.Top = btnExplore.Top + 11;
-            bunifuPages1.SetPage(0);
+            //bunifuPages1.SetPage(0);
         }
 
         private void btnAlbums_Click(object sender, EventArgs e)
         {
             indicator.Top = btnAlbums.Top + 11;
-            bunifuPages1.SetPage(2);
+            //bunifuPages1.SetPage(2);
         }
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             indicator.Top = btnPlaylist.Top + 11;
-            bunifuPages1.SetPage(3);
+            //bunifuPages1.SetPage(3);
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            indicator.Top = btnSetting.Top + 11;
         }
         #endregion
 
@@ -93,11 +103,20 @@ namespace Media_Player
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "No Playing...";
-            Random();
-            picBack1.Image = Image.FromFile("..//..//image/back1.jpg");
-            picBack2.Image = Image.FromFile("..//..//image/back2.jpg");
-            picBack3.Image = Image.FromFile("..//..//image/back3.jpg");
 
+            /* picBack1.Image = Image.FromFile("..//..//image/back1.jpg");
+             picBack2.Image = Image.FromFile("..//..//image/back2.jpg");
+             picBack3.Image = Image.FromFile("..//..//image/back3.jpg");*/
+            xmlDoc.Load("..//..//ListSong.xml");
+
+            nodeList = xmlDoc.DocumentElement.SelectNodes("/songs/" + "/song");
+
+            for (int i = 0; i < 30; i++)
+            {
+                Song.ListSong.GlobalSongName.Add(nodeList[i].SelectSingleNode("Title").InnerText);
+                Song.ListSong.GlobalAuthor.Add(nodeList[i].SelectSingleNode("Author").InnerText);
+                Song.ListSong.GlobalGenre.Add(nodeList[i].SelectSingleNode("Genre").InnerText);
+            }
         }
 
         //playmusic
@@ -307,19 +326,107 @@ namespace Media_Player
                 runmp3(SongName);
                 label3.Text = SongName + " - " + m.lblAuthor.Text + " Playing...";
             };
-
-
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-           
+            
+            for (int i = 0; i < Song.ListSong.GlobalSongName.Count; i++)
+            {
+                AddMusicItem(Song.ListSong.GlobalSongName[i],
+                    Song.ListSong.GlobalAuthor[i],
+                    Song.ListSong.GlobalGenre[i],
+                    Song.ListSong.GlobalSongName[i] + ".jpg");
+            }
         }
 
-        private void txt_Search_KeyPress(object sender, KeyPressEventArgs e)
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[1])
+                    musicitem.Visible = true;
+                else
+                    musicitem.Visible = false;
+            }
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[23])
+                    musicitem.Visible = true;
+                else
+                    musicitem.Visible = false;
+            }
+        }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[27])
+                    musicitem.Visible = true;
+                else
+                    musicitem.Visible = false;
+            }
+        }
+
+        private void bunifuButton4_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[19])
+                    musicitem.Visible = true;
+                else
+                    musicitem.Visible = false;
+            }
+        }
+
+        private void bunifuButton5_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[11])
+                    musicitem.Visible = true;
+                else
+                    musicitem.Visible = false;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            foreach (var item in pnlControl.Controls)
+            {
+                var musicitem = (MusicItem)item;
+                musicitem.Visible = true;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void picPlaying_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2(SongName);
+            frm2.TopLevel = false;
+            pnlControl.Hide();
+            panel2.Dock = DockStyle.Fill;
+            panel2.Controls.Add(frm2);
+            frm2.BringToFront();
+            frm2.Dock = DockStyle.Fill;
+            frm2.Show();
+        }
+
+        
     }
 }
 ;

@@ -223,6 +223,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Song.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
