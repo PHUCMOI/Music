@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Media_Player.Component
 {
     public partial class MusicItem : UserControl
     {
+        public static XmlDocument xmlDoc = new XmlDocument();
+        public static XmlNodeList nodeList;
+
         public event EventHandler OnSelect = null;
         public MusicItem()
         {
@@ -36,6 +40,58 @@ namespace Media_Player.Component
         private void MusicItem_MouseLeave(object sender, EventArgs e)
         {
             BackColor = Color.Transparent;
+        }
+
+        public XmlDocument doc = new XmlDocument();
+        public XmlElement root;
+
+        private string fileName = @"..//..//FavoriteSong.xml";
+        
+
+        public void AddItem(string Title, string Author, string Genre)
+        {
+            doc.Load(fileName);
+
+            root = doc.DocumentElement;
+
+            XmlNode item = doc.CreateElement("song");
+
+            XmlElement Title_ = doc.CreateElement("Title");
+            Title_.InnerText = Title;
+            item.AppendChild(Title_);
+
+            XmlElement Author_ = doc.CreateElement("Author");
+            Author_.InnerText = Author;
+            item.AppendChild(Author_);
+
+            XmlElement Genre_ = doc.CreateElement("Genre");
+            Genre_.InnerText = Genre;
+            item.AppendChild(Genre_);
+
+            root.AppendChild(item);
+            doc.Save(fileName);
+        }
+
+
+        private void btnFavortie_Click(object sender, EventArgs e)
+        {
+            if (Song.CheckDuplicate(SongName) == 1)
+            {
+                Song.FavoriteSong.GlobalSongName.Add(SongName);
+                Song.FavoriteSong.GlobalAuthor.Add(Author);
+                Song.FavoriteSong.GlobalGenre.Add(Album);
+                int n = Song.FavoriteSong.GlobalSongName.Count;
+                AddItem(Song.FavoriteSong.GlobalSongName[n - 1], Song.FavoriteSong.GlobalAuthor[n -1], Song.FavoriteSong.GlobalGenre[n - 1]);
+            }
+            btnFavortie.Image = Image.FromFile(@"..//..//image/redheart.png");
+        }
+
+        private void MusicItem_Load(object sender, EventArgs e)
+        {
+            if (Song.CheckDuplicate(SongName) == 0)
+            {
+                btnFavortie.Image = Image.FromFile(@"..//..//image/redheart.png");
+            }
         }
     }
 }

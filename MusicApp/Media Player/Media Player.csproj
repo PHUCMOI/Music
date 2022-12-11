@@ -278,6 +278,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FavoriteSong.xml" />
     <Content Include="image\1.jpg" />
     <Content Include="image\1628687.png" />
     <Content Include="image\Back to hometown.jpg" />

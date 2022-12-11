@@ -35,7 +35,7 @@
             this.lblAuthor = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblAlbum = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnNext = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.btnFavortie = new Bunifu.UI.WinForms.BunifuImageButton();
             this.picSong = new Bunifu.UI.WinForms.BunifuPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSong)).BeginInit();
             this.SuspendLayout();
@@ -136,41 +136,42 @@
             this.lblAlbum.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblAlbum.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // btnNext
+            // btnFavortie
             // 
-            this.btnNext.ActiveImage = null;
-            this.btnNext.AllowAnimations = true;
-            this.btnNext.AllowBuffering = false;
-            this.btnNext.AllowToggling = false;
-            this.btnNext.AllowZooming = true;
-            this.btnNext.AllowZoomingOnFocus = false;
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.BackColor = System.Drawing.Color.Transparent;
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnNext.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnNext.ErrorImage")));
-            this.btnNext.FadeWhenInactive = false;
-            this.btnNext.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.ImageActive = null;
-            this.btnNext.ImageLocation = null;
-            this.btnNext.ImageMargin = 20;
-            this.btnNext.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnNext.ImageZoomSize = new System.Drawing.Size(50, 50);
-            this.btnNext.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnNext.InitialImage")));
-            this.btnNext.Location = new System.Drawing.Point(359, 16);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Rotation = 0;
-            this.btnNext.ShowActiveImage = true;
-            this.btnNext.ShowCursorChanges = true;
-            this.btnNext.ShowImageBorders = true;
-            this.btnNext.ShowSizeMarkers = false;
-            this.btnNext.Size = new System.Drawing.Size(50, 50);
-            this.btnNext.TabIndex = 15;
-            this.btnNext.ToolTipText = "";
-            this.btnNext.WaitOnLoad = false;
-            this.btnNext.Zoom = 20;
-            this.btnNext.ZoomSpeed = 10;
+            this.btnFavortie.ActiveImage = null;
+            this.btnFavortie.AllowAnimations = true;
+            this.btnFavortie.AllowBuffering = false;
+            this.btnFavortie.AllowToggling = false;
+            this.btnFavortie.AllowZooming = true;
+            this.btnFavortie.AllowZoomingOnFocus = false;
+            this.btnFavortie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFavortie.BackColor = System.Drawing.Color.Transparent;
+            this.btnFavortie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFavortie.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFavortie.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnFavortie.ErrorImage")));
+            this.btnFavortie.FadeWhenInactive = false;
+            this.btnFavortie.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnFavortie.Image = ((System.Drawing.Image)(resources.GetObject("btnFavortie.Image")));
+            this.btnFavortie.ImageActive = null;
+            this.btnFavortie.ImageLocation = null;
+            this.btnFavortie.ImageMargin = 20;
+            this.btnFavortie.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnFavortie.ImageZoomSize = new System.Drawing.Size(65, 65);
+            this.btnFavortie.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnFavortie.InitialImage")));
+            this.btnFavortie.Location = new System.Drawing.Point(344, 16);
+            this.btnFavortie.Name = "btnFavortie";
+            this.btnFavortie.Rotation = 0;
+            this.btnFavortie.ShowActiveImage = true;
+            this.btnFavortie.ShowCursorChanges = true;
+            this.btnFavortie.ShowImageBorders = true;
+            this.btnFavortie.ShowSizeMarkers = false;
+            this.btnFavortie.Size = new System.Drawing.Size(65, 65);
+            this.btnFavortie.TabIndex = 15;
+            this.btnFavortie.ToolTipText = "";
+            this.btnFavortie.WaitOnLoad = false;
+            this.btnFavortie.Zoom = 20;
+            this.btnFavortie.ZoomSpeed = 10;
+            this.btnFavortie.Click += new System.EventHandler(this.btnFavortie_Click);
             // 
             // picSong
             // 
@@ -196,7 +197,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnFavortie);
             this.Controls.Add(this.lblAlbum);
             this.Controls.Add(this.bunifuLabel5);
             this.Controls.Add(this.lblAuthor);
@@ -206,6 +207,7 @@
             this.Controls.Add(this.picSong);
             this.Name = "MusicItem";
             this.Size = new System.Drawing.Size(430, 389);
+            this.Load += new System.EventHandler(this.MusicItem_Load);
             this.Click += new System.EventHandler(this.picSong_Click);
             this.MouseLeave += new System.EventHandler(this.MusicItem_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MusicItem_MouseMove);
@@ -219,7 +221,7 @@
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
-        private Bunifu.UI.WinForms.BunifuImageButton btnNext;
+        private Bunifu.UI.WinForms.BunifuImageButton btnFavortie;
         public Bunifu.UI.WinForms.BunifuLabel lblSongName;
         public Bunifu.UI.WinForms.BunifuLabel lblAuthor;
         public Bunifu.UI.WinForms.BunifuLabel lblAlbum;

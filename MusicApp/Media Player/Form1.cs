@@ -18,42 +18,48 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Media_Player.Component;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using Bunifu.UI.WinForms.Helpers.Transitions;
+using System.Data.SqlTypes;
 
 namespace Media_Player
 {
-    
     public partial class Form1 : Form
     {
-        //XML
-        public static XmlDocument xmlDoc = new XmlDocument();
-        public static XmlNodeList nodeList;
-
         string SongName;
         SoundPlayer looping;
 
-        Random random = new Random();
-        List<int> randlist = new List<int>();
-        int index = 0;
-        
+        //XML
+        public static XmlDocument xmlDoc = new XmlDocument();
+        public static XmlNodeList nodeList;
+        public static XmlDocument xmlFavoriteDoc = new XmlDocument();
+        public static XmlNodeList songList;
+
+        //random
+        public static List<int> ranList(int sl)
+        {
+            Random rand = new Random();
+            List<int> list = new List<int>();
+            while (list.Count < sl)
+            {
+                int a = rand.Next(0, sl);
+                if (list.Contains(a))
+                {
+                    continue;
+                }
+                else
+                {
+                    list.Add(a);
+                }
+            }
+            return list;
+        }
+
 
         public Form1()
         {
             InitializeComponent();
             trackVolume.Value = 50;
-
-            while(index < 20)
-            {
-                {
-                    int randomNum = random.Next(1, 100);
-                    randlist.Add(randomNum);
-                    if (index == 5)
-                    {
-                        break;
-                    }
-                    index++;
-                }
-            }    
-
+            pnlControlFavorite.Visible = false;
             DataSet dataset = new DataSet();
 
             dataset.ReadXml("..//..//ListSong.xml");
@@ -66,14 +72,44 @@ namespace Media_Player
         private void btnHome_Click(object sender, EventArgs e)
         {
             indicator.Top = btnHome.Top + 11;
-            pnlControl.Show();
+            pnlControl.Visible = true;
+            panel2.Visible = false;
+            pnlControlFavorite.Visible = false;
+
+            List<Control> controls = pnlControlFavorite.Controls.OfType<Control>().ToList();
+            foreach (Control c in controls)
+            {
+                pnlControlFavorite.Controls.Remove(c);
+                //c.Dispose();
+            }    
+            //pnlControl.BringToFront();
             //bunifuPages1.SetPage(1);
         }
 
         private void btnExplore_Click(object sender, EventArgs e)
         {
             indicator.Top = btnExplore.Top + 11;
-            //bunifuPages1.SetPage(0);
+            pnlControl.Visible = false;
+            panel2.Visible = false;
+            if (pnlControl.Visible == false)
+            {
+                pnlControlFavorite.Visible = true;
+                pnlControlFavorite.BringToFront();
+            }
+
+            //Add Favorite Song
+            for (int i = 0; i < Song.FavoriteSong.GlobalSongName.Count; i++)
+            {
+                AddFavoriteMusicItem(Song.FavoriteSong.GlobalSongName[i],
+                    Song.FavoriteSong.GlobalAuthor[i],
+                    Song.FavoriteSong.GlobalGenre[i],
+                    Song.FavoriteSong.GlobalSongName[i] + ".jpg");
+            }
+
+            if(Song.FavoriteSong.GlobalSongName.Count == 0)
+            {
+                label5.Visible = true;
+            }    
         }
 
         private void btnAlbums_Click(object sender, EventArgs e)
@@ -94,30 +130,41 @@ namespace Media_Player
         }
         #endregion
 
+        List<int> rnd = ranList(30);
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label3.Text = "No Playing...";
+            label5.Visible = false;
+
+            xmlDoc.Load("..//..//ListSong.xml");
+
+            nodeList = xmlDoc.DocumentElement.SelectNodes("/songs/" + "/song");
+            for (int i = 0; i < nodeList.Count; i++)
+            {
+                Song.ListSong.GlobalSongName.Add(nodeList[rnd[i]].SelectSingleNode("Title").InnerText);
+                Song.ListSong.GlobalAuthor.Add(nodeList[rnd[i]].SelectSingleNode("Author").InnerText);
+                Song.ListSong.GlobalGenre.Add(nodeList[rnd[i]].SelectSingleNode("Genre").InnerText);
+            }
+
+            //Favorite Song
+            xmlFavoriteDoc.Load("..//..//FavoriteSong.xml");
+
+            songList = xmlFavoriteDoc.DocumentElement.SelectNodes("/songs/" + "/song");
+            for (int i = 0; i < songList.Count; i++)
+            {
+                Song.FavoriteSong.GlobalSongName.Add(songList[i].SelectSingleNode("Title").InnerText);
+                Song.FavoriteSong.GlobalAuthor.Add(songList[i].SelectSingleNode("Author").InnerText);
+                Song.FavoriteSong.GlobalGenre.Add(songList[i].SelectSingleNode("Genre").InnerText);
+            }
+        }
+
         #region NavigationBar
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
         #endregion
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            label3.Text = "No Playing...";
 
-            /* picBack1.Image = Image.FromFile("..//..//image/back1.jpg");
-             picBack2.Image = Image.FromFile("..//..//image/back2.jpg");
-             picBack3.Image = Image.FromFile("..//..//image/back3.jpg");*/
-            xmlDoc.Load("..//..//ListSong.xml");
-
-            nodeList = xmlDoc.DocumentElement.SelectNodes("/songs/" + "/song");
-
-            for (int i = 0; i < 30; i++)
-            {
-                Song.ListSong.GlobalSongName.Add(nodeList[i].SelectSingleNode("Title").InnerText);
-                Song.ListSong.GlobalAuthor.Add(nodeList[i].SelectSingleNode("Author").InnerText);
-                Song.ListSong.GlobalGenre.Add(nodeList[i].SelectSingleNode("Genre").InnerText);
-            }
-        }
 
         //playmusic
         public void runmp3(string SongName)
@@ -129,7 +176,7 @@ namespace Media_Player
         #region MusicControl
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(PlayMusic.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            if (PlayMusic.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
                 bunifuHSlider1.Maximum = (int)PlayMusic.Ctlcontrols.currentItem.duration;
                 bunifuHSlider1.Value = (int)PlayMusic.Ctlcontrols.currentPosition;
@@ -142,24 +189,24 @@ namespace Media_Player
                 {
 
                 }
-            }    
-           
+            }
+
         }
         bool flagMusic = true;
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if(flagMusic == true)
+            if (flagMusic == true)
             {
                 PlayMusic.Ctlcontrols.pause();
                 flagMusic = false;
                 btnPlay.Image = Image.FromFile(@"C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\image\pause.png");
             }
-            else 
+            else
             {
                 btnPlay.Image = Image.FromFile(@"C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\image\play-button.png");
                 PlayMusic.Ctlcontrols.play();
                 flagMusic = true;
-            }    
+            }
         }
 
         int volume = 0;
@@ -167,7 +214,7 @@ namespace Media_Player
         {
             PlayMusic.settings.volume = trackVolume.Value;
             volume = PlayMusic.settings.volume;
-            lblTrackVolumeValue.Text = trackVolume.Value.ToString() + "%";    
+            lblTrackVolumeValue.Text = trackVolume.Value.ToString() + "%";
         }
 
         private void bunifuHSlider1_MouseDown(object sender, MouseEventArgs e)
@@ -191,8 +238,7 @@ namespace Media_Player
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-           
-            
+
         }
 
 
@@ -219,12 +265,12 @@ namespace Media_Player
         bool flagloop = false;
         private void btnLoop_Click(object sender, EventArgs e)
         {
-            if(flagloop == false)
+            if (flagloop == false)
             {
                 looping = new SoundPlayer(@"C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav");
                 looping.PlayLooping();
                 flagloop = true;
-               //label10.Visible = true;
+                //label10.Visible = true;
             }
             else
             {
@@ -238,7 +284,7 @@ namespace Media_Player
         bool flagMute = false;
         private void btnMuteVolume_Click(object sender, EventArgs e)
         {
-            if(flagMute == false)
+            if (flagMute == false)
             {
                 PlayMusic.settings.volume = 0;
                 flagMute = true;
@@ -252,36 +298,35 @@ namespace Media_Player
             }
         }
         #endregion
-
-
+        #region search
         //search
         private void txt_Search_TextChange(object sender, EventArgs e)
         {
-           /* string searchValue = txt_Search.Text;
-            try
-            {
-                var result_songname = from col in dataTableListSong.AsEnumerable()
-                                      where col[1].ToString().Contains(searchValue) 
-                                      select col;
-                *//*var result_songname = from row in dataTableListSong.AsEnumerable()
-                                      where row[1].ToString().Contains(searchValue)
-                                      select row;*//*
-                if (result_songname.Count() == 0)
-                {
-                    label11.Text = "Không có kết quả";
-                    bunifuDataGridView2.DataSource = dataTableListSong;
-                }
-                else
-                {
-                    bunifuDataGridView2.DataSource = result_songname.CopyToDataTable();
-                    label11.Text = "có";
+            /* string searchValue = txt_Search.Text;
+             try
+             {
+                 var result_songname = from col in dataTableListSong.AsEnumerable()
+                                       where col[1].ToString().Contains(searchValue) 
+                                       select col;
+                 *//*var result_songname = from row in dataTableListSong.AsEnumerable()
+                                       where row[1].ToString().Contains(searchValue)
+                                       select row;*//*
+                 if (result_songname.Count() == 0)
+                 {
+                     label11.Text = "Không có kết quả";
+                     bunifuDataGridView2.DataSource = dataTableListSong;
+                 }
+                 else
+                 {
+                     bunifuDataGridView2.DataSource = result_songname.CopyToDataTable();
+                     label11.Text = "có";
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message);
+             }*/
         }
 
 
@@ -299,13 +344,8 @@ namespace Media_Player
             }
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            timer2.Stop();
-            bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
-        }
-
-        //
+        #endregion
+        #region load List Music
         public void AddMusicItem(string name, string author, string album, string image)
         {
             var m = new MusicItem()
@@ -330,7 +370,7 @@ namespace Media_Player
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            
+            //Add List Song
             for (int i = 0; i < Song.ListSong.GlobalSongName.Count; i++)
             {
                 AddMusicItem(Song.ListSong.GlobalSongName[i],
@@ -338,14 +378,18 @@ namespace Media_Player
                     Song.ListSong.GlobalGenre[i],
                     Song.ListSong.GlobalSongName[i] + ".jpg");
             }
-        }
 
+
+            
+        }
+        #endregion
+        #region TypeMusic
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             foreach (var item in pnlControl.Controls)
             {
                 var musicitem = (MusicItem)item;
-                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[1])
+                if (musicitem.lblAlbum.Text == "Việt Nam")
                     musicitem.Visible = true;
                 else
                     musicitem.Visible = false;
@@ -357,7 +401,7 @@ namespace Media_Player
             foreach (var item in pnlControl.Controls)
             {
                 var musicitem = (MusicItem)item;
-                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[23])
+                if (musicitem.lblAlbum.Text == "Hàn Quốc")
                     musicitem.Visible = true;
                 else
                     musicitem.Visible = false;
@@ -369,7 +413,7 @@ namespace Media_Player
             foreach (var item in pnlControl.Controls)
             {
                 var musicitem = (MusicItem)item;
-                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[27])
+                if (musicitem.lblAlbum.Text == "US/UK")
                     musicitem.Visible = true;
                 else
                     musicitem.Visible = false;
@@ -381,7 +425,7 @@ namespace Media_Player
             foreach (var item in pnlControl.Controls)
             {
                 var musicitem = (MusicItem)item;
-                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[19])
+                if (musicitem.lblAlbum.Text == "Rap")
                     musicitem.Visible = true;
                 else
                     musicitem.Visible = false;
@@ -393,7 +437,7 @@ namespace Media_Player
             foreach (var item in pnlControl.Controls)
             {
                 var musicitem = (MusicItem)item;
-                if (musicitem.lblAlbum.Text == Song.ListSong.GlobalGenre[11])
+                if (musicitem.lblAlbum.Text == "EDM")
                     musicitem.Visible = true;
                 else
                     musicitem.Visible = false;
@@ -409,24 +453,47 @@ namespace Media_Player
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        #endregion
+        #region open Lyric
         private void picPlaying_Click(object sender, EventArgs e)
         {
             Form2 frm2 = new Form2(SongName);
             frm2.TopLevel = false;
             pnlControl.Hide();
-            panel2.Dock = DockStyle.Fill;
-            panel2.Controls.Add(frm2);
-            frm2.BringToFront();
-            frm2.Dock = DockStyle.Fill;
-            frm2.Show();
+            if (pnlControl.Visible == false)
+            {
+                panel2.Visible = true;
+                panel2.Dock = DockStyle.Fill;
+                panel2.Controls.Add(frm2);
+                frm2.BringToFront();
+                frm2.Dock = DockStyle.Fill;
+                frm2.Show();
+            }
         }
+        #endregion
 
-        
+
+        #region Favorite
+        public void AddFavoriteMusicItem(string name, string author, string album, string image)
+        {
+            var m = new MusicItem()
+            {
+                SongName = name,
+                Author = author,
+                Album = album,
+                ImageSong = Image.FromFile("..//..//image/" + image)
+            };
+
+            pnlControlFavorite.Controls.Add(m);
+            m.OnSelect += (ss, ee) =>
+            {
+                var musicitem = (MusicItem)ss;
+                SongName = m.lblSongName.Text;
+                picPlaying.Image = m.ImageSong;
+                runmp3(SongName);
+                label3.Text = SongName + " - " + m.lblAuthor.Text + " Playing...";
+            };
+        }
+        #endregion
     }
-}
-;
+};
