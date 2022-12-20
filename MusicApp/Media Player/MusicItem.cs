@@ -93,5 +93,11 @@ namespace Media_Player.Component
                 btnFavortie.Image = Image.FromFile(@"..//..//image/redheart.png");
             }
         }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            Form5 frm5 = new Form5();
+            frm5.ShowDialog();
+        }
     }
 }

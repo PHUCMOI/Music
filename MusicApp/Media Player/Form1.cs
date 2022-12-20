@@ -20,6 +20,7 @@ using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using Bunifu.UI.WinForms.Helpers.Transitions;
 using System.Data.SqlTypes;
+using Microsoft.VisualBasic;
 
 namespace Media_Player
 {
@@ -76,6 +77,7 @@ namespace Media_Player
             panel2.Visible = false;
             pnlControlFavorite.Visible = false;
 
+
             List<Control> controls = pnlControlFavorite.Controls.OfType<Control>().ToList();
             foreach (Control c in controls)
             {
@@ -112,15 +114,23 @@ namespace Media_Player
             }    
         }
 
-        private void btnAlbums_Click(object sender, EventArgs e)
-        {
-            indicator.Top = btnAlbums.Top + 11;
-            //bunifuPages1.SetPage(2);
-        }
-
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             indicator.Top = btnPlaylist.Top + 11;
+            Form3 frm3 = new Form3();
+            frm3.TopLevel = false;
+            pnlControl.Hide();
+            pnlControlFavorite.Hide();
+            if (pnlControl.Visible == false)
+            {
+                panel2.Visible = true;
+                panel2.Dock = DockStyle.Fill;
+                panel2.Controls.Add(frm3);
+                frm3.BringToFront();
+                frm3.Dock = DockStyle.Fill;
+                frm3.Show();
+            }
+
             //bunifuPages1.SetPage(3);
         }
 
@@ -378,9 +388,6 @@ namespace Media_Player
                     Song.ListSong.GlobalGenre[i],
                     Song.ListSong.GlobalSongName[i] + ".jpg");
             }
-
-
-            
         }
         #endregion
         #region TypeMusic
@@ -459,6 +466,7 @@ namespace Media_Player
         {
             Form2 frm2 = new Form2(SongName);
             frm2.TopLevel = false;
+            pnlControlFavorite.Hide();
             pnlControl.Hide();
             if (pnlControl.Visible == false)
             {
@@ -470,9 +478,7 @@ namespace Media_Player
                 frm2.Show();
             }
         }
-        #endregion
-
-
+        #endregion 
         #region Favorite
         public void AddFavoriteMusicItem(string name, string author, string album, string image)
         {
@@ -495,5 +501,10 @@ namespace Media_Player
             };
         }
         #endregion
+        #region playlist
+
+        #endregion
+
+        
     }
 };

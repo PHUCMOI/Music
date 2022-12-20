@@ -102,3 +102,7 @@ C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\button.
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Component.MusicItem.resources
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\bin\Debug\image\Có chơi có chịu.jpg
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form2.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Playlist.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form3.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form4.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form5.resources

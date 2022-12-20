@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -136,6 +137,35 @@ namespace Media_Player
                 }
             }
         }
+
+        public class Track
+        {
+            public int TrackID { get; set; }
+            public string Name { get; set; }
+            /*
+            public string Artist { get; set; }
+            public string Album { get; set; }
+            public int PlayCount { get; set; }
+            public int SkipCount { get; set; }*/
+        }
+        public class Playlist
+        {
+            private static List<string> PlaylistName = new List<string>();
+
+
+            public static List<string> GlobalPlaylistName
+            {
+                get
+                {
+                    return PlaylistName;
+                }
+                set
+                {
+                    PlaylistName.Add(value.ToString());
+                }
+            }
+        }
+
         public static int CheckDuplicate(string SongName)
         {
             for (int i = 0; i < FavoriteSong.GlobalSongName.Count; i++)
