@@ -38,6 +38,9 @@
             this.btnFavortie = new Bunifu.UI.WinForms.BunifuImageButton();
             this.picSong = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.btnDownload = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picSong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,12 +232,53 @@
             this.bunifuImageButton1.ZoomSpeed = 10;
             this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
+            // btnDownload
+            // 
+            this.btnDownload.ActiveImage = null;
+            this.btnDownload.AllowAnimations = true;
+            this.btnDownload.AllowBuffering = false;
+            this.btnDownload.AllowToggling = false;
+            this.btnDownload.AllowZooming = true;
+            this.btnDownload.AllowZoomingOnFocus = false;
+            this.btnDownload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDownload.BackColor = System.Drawing.Color.Transparent;
+            this.btnDownload.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDownload.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.ErrorImage")));
+            this.btnDownload.FadeWhenInactive = false;
+            this.btnDownload.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnDownload.Image = ((System.Drawing.Image)(resources.GetObject("btnDownload.Image")));
+            this.btnDownload.ImageActive = null;
+            this.btnDownload.ImageLocation = null;
+            this.btnDownload.ImageMargin = 20;
+            this.btnDownload.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnDownload.ImageZoomSize = new System.Drawing.Size(65, 65);
+            this.btnDownload.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.InitialImage")));
+            this.btnDownload.Location = new System.Drawing.Point(344, 296);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Rotation = 0;
+            this.btnDownload.ShowActiveImage = true;
+            this.btnDownload.ShowCursorChanges = true;
+            this.btnDownload.ShowImageBorders = true;
+            this.btnDownload.ShowSizeMarkers = false;
+            this.btnDownload.Size = new System.Drawing.Size(65, 65);
+            this.btnDownload.TabIndex = 18;
+            this.btnDownload.ToolTipText = "";
+            this.btnDownload.WaitOnLoad = false;
+            this.btnDownload.Zoom = 20;
+            this.btnDownload.ZoomSpeed = 10;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // MusicItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.bunifuImageButton1);
             this.Controls.Add(this.btnFavortie);
             this.Controls.Add(this.lblAlbum);
@@ -266,5 +310,8 @@
         public Bunifu.UI.WinForms.BunifuLabel lblAlbum;
         public Bunifu.UI.WinForms.BunifuPictureBox picSong;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
+        private Bunifu.UI.WinForms.BunifuImageButton btnDownload;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

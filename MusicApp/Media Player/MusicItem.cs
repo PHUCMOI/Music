@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.IO;
+using System.Globalization;
 
 namespace Media_Player.Component
 {
@@ -16,7 +19,7 @@ namespace Media_Player.Component
         public static XmlDocument xmlDoc = new XmlDocument();
         public static XmlNodeList nodeList;
 
-        public event EventHandler OnSelect = null;
+        public event EventHandler OnSelect = null;    
         public MusicItem()
         {
             InitializeComponent();
@@ -85,7 +88,6 @@ namespace Media_Player.Component
             }
             btnFavortie.Image = Image.FromFile(@"..//..//image/redheart.png");
         }
-
         private void MusicItem_Load(object sender, EventArgs e)
         {
             if (Song.CheckDuplicate(SongName) == 0)
@@ -96,8 +98,37 @@ namespace Media_Player.Component
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Form5 frm5 = new Form5();
-            frm5.ShowDialog();
+            if(Form3.flagCheckOpenform == true)
+            {
+                for(int i = 0; i < Form1.ListPlayList.Count; i++)
+                {
+                    if (Form1.ListPlayList[i].getset_PlayListName == Form4.PlayListName)
+                    {
+                        int x = Form1.ListPlayList[i].getset_SongName.Count;
+                        Form1.ListPlayList[i].getset_SongName.Add(SongName);
+                    }   
+                }    
+            }
+            else
+            {
+                Form5 frm5 = new Form5(SongName);
+                frm5.ShowDialog();
+            }
+        }
+
+        string despath = "";
+        string fileToCopy = "";
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                despath = ofd.SelectedPath;
+            }
+
+
+            fileToCopy = "C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + lblSongName.Text + ".wav";
+            File.Copy(fileToCopy, despath + Path.GetFileName(fileToCopy));
         }
     }
-}
+} 

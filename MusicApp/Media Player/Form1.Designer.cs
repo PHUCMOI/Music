@@ -64,8 +64,6 @@
             this.lblTrackVolumeValue = new System.Windows.Forms.Label();
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.lblTotalTime = new System.Windows.Forms.Label();
-            this.btnLoop = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.btnDownload = new Bunifu.UI.WinForms.BunifuImageButton();
             this.trackVolume = new Bunifu.UI.WinForms.BunifuHSlider();
             this.btnMuteVolume = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnNext = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -81,15 +79,12 @@
             this.bunifuButton4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuButton5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlControlFavorite = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
             this.pnlSlideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlaying)).BeginInit();
-            this.pnlControlFavorite.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSlideBar
@@ -724,8 +719,6 @@
             this.panel1.Controls.Add(this.lblTrackVolumeValue);
             this.panel1.Controls.Add(this.lblCurrentTime);
             this.panel1.Controls.Add(this.lblTotalTime);
-            this.panel1.Controls.Add(this.btnLoop);
-            this.panel1.Controls.Add(this.btnDownload);
             this.panel1.Controls.Add(this.trackVolume);
             this.panel1.Controls.Add(this.btnMuteVolume);
             this.panel1.Controls.Add(this.btnNext);
@@ -790,78 +783,6 @@
             this.lblTotalTime.Size = new System.Drawing.Size(51, 25);
             this.lblTotalTime.TabIndex = 19;
             this.lblTotalTime.Text = "0:00";
-            // 
-            // btnLoop
-            // 
-            this.btnLoop.ActiveImage = null;
-            this.btnLoop.AllowAnimations = true;
-            this.btnLoop.AllowBuffering = false;
-            this.btnLoop.AllowToggling = false;
-            this.btnLoop.AllowZooming = true;
-            this.btnLoop.AllowZoomingOnFocus = false;
-            this.btnLoop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnLoop.BackColor = System.Drawing.Color.Transparent;
-            this.btnLoop.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnLoop.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnLoop.ErrorImage")));
-            this.btnLoop.FadeWhenInactive = false;
-            this.btnLoop.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnLoop.Image = ((System.Drawing.Image)(resources.GetObject("btnLoop.Image")));
-            this.btnLoop.ImageActive = null;
-            this.btnLoop.ImageLocation = null;
-            this.btnLoop.ImageMargin = 20;
-            this.btnLoop.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLoop.ImageZoomSize = new System.Drawing.Size(50, 50);
-            this.btnLoop.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnLoop.InitialImage")));
-            this.btnLoop.Location = new System.Drawing.Point(541, 55);
-            this.btnLoop.Name = "btnLoop";
-            this.btnLoop.Rotation = 0;
-            this.btnLoop.ShowActiveImage = true;
-            this.btnLoop.ShowCursorChanges = true;
-            this.btnLoop.ShowImageBorders = true;
-            this.btnLoop.ShowSizeMarkers = false;
-            this.btnLoop.Size = new System.Drawing.Size(50, 50);
-            this.btnLoop.TabIndex = 18;
-            this.btnLoop.ToolTipText = "";
-            this.btnLoop.WaitOnLoad = false;
-            this.btnLoop.Zoom = 20;
-            this.btnLoop.ZoomSpeed = 10;
-            this.btnLoop.Click += new System.EventHandler(this.btnLoop_Click);
-            // 
-            // btnDownload
-            // 
-            this.btnDownload.ActiveImage = null;
-            this.btnDownload.AllowAnimations = true;
-            this.btnDownload.AllowBuffering = false;
-            this.btnDownload.AllowToggling = false;
-            this.btnDownload.AllowZooming = true;
-            this.btnDownload.AllowZoomingOnFocus = false;
-            this.btnDownload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDownload.BackColor = System.Drawing.Color.Transparent;
-            this.btnDownload.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDownload.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.ErrorImage")));
-            this.btnDownload.FadeWhenInactive = false;
-            this.btnDownload.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnDownload.Image = ((System.Drawing.Image)(resources.GetObject("btnDownload.Image")));
-            this.btnDownload.ImageActive = null;
-            this.btnDownload.ImageLocation = null;
-            this.btnDownload.ImageMargin = 20;
-            this.btnDownload.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnDownload.ImageZoomSize = new System.Drawing.Size(50, 50);
-            this.btnDownload.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDownload.InitialImage")));
-            this.btnDownload.Location = new System.Drawing.Point(765, 55);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Rotation = 0;
-            this.btnDownload.ShowActiveImage = true;
-            this.btnDownload.ShowCursorChanges = true;
-            this.btnDownload.ShowImageBorders = true;
-            this.btnDownload.ShowSizeMarkers = false;
-            this.btnDownload.Size = new System.Drawing.Size(50, 50);
-            this.btnDownload.TabIndex = 17;
-            this.btnDownload.ToolTipText = "";
-            this.btnDownload.WaitOnLoad = false;
-            this.btnDownload.Zoom = 20;
-            this.btnDownload.ZoomSpeed = 10;
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
             // trackVolume
             // 
@@ -1597,25 +1518,6 @@
             this.panel2.Size = new System.Drawing.Size(34, 47);
             this.panel2.TabIndex = 0;
             // 
-            // pnlControlFavorite
-            // 
-            this.pnlControlFavorite.AutoScroll = true;
-            this.pnlControlFavorite.Controls.Add(this.label5);
-            this.pnlControlFavorite.Location = new System.Drawing.Point(235, 53);
-            this.pnlControlFavorite.Name = "pnlControlFavorite";
-            this.pnlControlFavorite.Size = new System.Drawing.Size(1355, 695);
-            this.pnlControlFavorite.TabIndex = 17;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(240, 28);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Hiện chưa có bài hát nào...";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1633,7 +1535,6 @@
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlSlideBar);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlControlFavorite);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -1649,8 +1550,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlaying)).EndInit();
-            this.pnlControlFavorite.ResumeLayout(false);
-            this.pnlControlFavorite.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1673,20 +1572,16 @@
         private Bunifu.UI.WinForms.BunifuHSlider bunifuHSlider1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.UI.WinForms.BunifuImageButton btnExit;
-        private System.Windows.Forms.Label label3;
         private Bunifu.UI.WinForms.BunifuImageButton btnNext;
         private Bunifu.UI.WinForms.BunifuImageButton btnPlay;
         private Bunifu.UI.WinForms.BunifuImageButton btnPrevious;
         private Bunifu.UI.WinForms.BunifuImageButton btnMuteVolume;
-        private Bunifu.UI.WinForms.BunifuImageButton btnLoop;
-        private Bunifu.UI.WinForms.BunifuImageButton btnDownload;
         private Bunifu.UI.WinForms.BunifuHSlider trackVolume;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCurrentTime;
         private System.Windows.Forms.Label lblTotalTime;
         private System.Windows.Forms.Label lblTrackVolumeValue;
         private Bunifu.UI.WinForms.BunifuTextBox txt_Search;
-        private System.Windows.Forms.PictureBox picPlaying;
         public AxWMPLib.AxWindowsMediaPlayer PlayMusic;
         private System.Windows.Forms.FlowLayoutPanel pnlControl;
         private System.Windows.Forms.Label label4;
@@ -1696,8 +1591,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.FlowLayoutPanel pnlControlFavorite;
-        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.PictureBox picPlaying;
     }
 }
 

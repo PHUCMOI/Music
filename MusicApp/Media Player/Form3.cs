@@ -17,6 +17,8 @@ namespace Media_Player
 {
     public partial class Form3 : Form
     {
+        private string ListName;
+        public static bool flagCheckOpenform = false;
         public Form3()
         {
             InitializeComponent();
@@ -26,7 +28,6 @@ namespace Media_Player
         public static XmlNodeList playlist;
         public XmlDocument doc = new XmlDocument();
         public XmlElement root;
-        private XDocument xmldoc;
         private string fileName = @"..//..//Playlist.xml";
         public void AddItem(string Title)
         {
@@ -49,6 +50,7 @@ namespace Media_Player
             var m = new Playlist()
             {
                 PlaylistName = name,
+                listid = Convert.ToString(Form1.ListPlayList.Count - 1)
             };
 
             pnlControlPlaylist.Controls.Add(m);
@@ -56,7 +58,8 @@ namespace Media_Player
             m.OnSelect += (ss, ee) =>
             {
                 var musicitem = (Playlist)ss;
-                Form4 frm3 = new Form4();
+                Form4 frm3 = new Form4(m.PlaylistName);
+                flagCheckOpenform = true;
                 frm3.TopLevel = false;
                 pnlControlPlaylist.Hide();
                 if (pnlControlPlaylist.Visible == false)
@@ -75,11 +78,13 @@ namespace Media_Player
         {
 
             string Content = Interaction.InputBox("Nhập tên playlist: ", "Tên playlist", "", 500, 300);
-            Song.Playlist.GlobalPlaylistName.Add(Content);
+            //Song.Playlist.GlobalPlaylistName.Add(Content);
             Playlist playlist = new Playlist();
-
             playlist.PlaylistName = Content;
+            ListName = playlist.PlaylistName;
             AddPlaylistItem(Content);
+            PlayListSong item = new PlayListSong(Content);
+            Form1.ListPlayList.Add(item);
             /*XElement emp = new XElement("Playlist",
                 new XElement("PlaylistName", Content),
                 
@@ -97,13 +102,11 @@ namespace Media_Player
 
             xmlPlaylistDoc.Load("..//..//Playlist.xml");
 
-            playlist = xmlPlaylistDoc.DocumentElement.SelectNodes("/songs/" + "/song");
-            for (int i = 0; i < playlist.Count; i++)
+            playlist = xmlPlaylistDoc.DocumentElement.SelectNodes("/songs/" + "/song");*/
+            for (int i = 0; i < Form1.ListPlayList.Count; i++)
             {
-                Song.FavoriteSong.GlobalSongName.Add(playlist[i].SelectSingleNode("Title").InnerText);
-                Song.FavoriteSong.GlobalAuthor.Add(playlist[i].SelectSingleNode("Author").InnerText);
-                Song.FavoriteSong.GlobalGenre.Add(playlist[i].SelectSingleNode("Genre").InnerText);
-            }*/
+                AddPlaylistItem(Form1.ListPlayList[i].getset_PlayListName);
+            }
         }
     }
 }

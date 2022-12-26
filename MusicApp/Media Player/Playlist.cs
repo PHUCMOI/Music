@@ -15,13 +15,12 @@ namespace Media_Player
     public partial class Playlist : UserControl
     {
         public event EventHandler OnSelect = null;
-
         public Playlist()
         {
             InitializeComponent();
         }
         public string PlaylistName { get => lblPlaylistName.Text; set => lblPlaylistName.Text = value; }
-
+        public string listid { get; set; }
         private void picSong_Click(object sender, EventArgs e)  
         {
             OnSelect?.Invoke(this, e);
@@ -36,13 +35,15 @@ namespace Media_Player
         {
             BackColor = Color.Transparent;
         }
-
-        
-
         private void button1_Click(object sender, EventArgs e)
         {
-            int x = Song.Playlist.GlobalPlaylistName.IndexOf(this.PlaylistName);
-            Song.Playlist.GlobalPlaylistName.RemoveAt(x);
+            for (int i = 0; i < Form1.ListPlayList.Count; i++)
+            {
+                if (PlaylistName == Form1.ListPlayList[i].getset_PlayListName)
+                {
+                    Form1.ListPlayList.RemoveAt(i);
+                }
+            }
             Form3 newform = (Form3)this.Parent.Parent;
             this.Parent.Controls.Remove(this);
 

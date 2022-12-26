@@ -106,3 +106,5 @@ C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form3.resources
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form4.resources
 C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form5.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form6.resources
+C:\Users\PC\Documents\GitHub\Music\MusicApp\Media Player\obj\Debug\Media_Player.Form7.resources

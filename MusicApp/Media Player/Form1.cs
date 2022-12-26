@@ -29,6 +29,9 @@ namespace Media_Player
         string SongName;
         SoundPlayer looping;
 
+        //Playlist
+        public static List<PlayListSong> ListPlayList = new List<PlayListSong>();
+
         //XML
         public static XmlDocument xmlDoc = new XmlDocument();
         public static XmlNodeList nodeList;
@@ -60,7 +63,6 @@ namespace Media_Player
         {
             InitializeComponent();
             trackVolume.Value = 50;
-            pnlControlFavorite.Visible = false;
             DataSet dataset = new DataSet();
 
             dataset.ReadXml("..//..//ListSong.xml");
@@ -75,15 +77,7 @@ namespace Media_Player
             indicator.Top = btnHome.Top + 11;
             pnlControl.Visible = true;
             panel2.Visible = false;
-            pnlControlFavorite.Visible = false;
-
-
-            List<Control> controls = pnlControlFavorite.Controls.OfType<Control>().ToList();
-            foreach (Control c in controls)
-            {
-                pnlControlFavorite.Controls.Remove(c);
-                //c.Dispose();
-            }    
+            
             //pnlControl.BringToFront();
             //bunifuPages1.SetPage(1);
         }
@@ -92,26 +86,21 @@ namespace Media_Player
         {
             indicator.Top = btnExplore.Top + 11;
             pnlControl.Visible = false;
-            panel2.Visible = false;
+            Form6 frm3 = new Form6();
+            frm3.TopLevel = false;
+            pnlControl.Hide();
             if (pnlControl.Visible == false)
             {
-                pnlControlFavorite.Visible = true;
-                pnlControlFavorite.BringToFront();
+                panel2.Visible = true;
+                panel2.Dock = DockStyle.Fill;
+                panel2.Controls.Add(frm3);
+                frm3.BringToFront();
+                frm3.Dock = DockStyle.Fill;
+                frm3.Show();
             }
-
             //Add Favorite Song
-            for (int i = 0; i < Song.FavoriteSong.GlobalSongName.Count; i++)
-            {
-                AddFavoriteMusicItem(Song.FavoriteSong.GlobalSongName[i],
-                    Song.FavoriteSong.GlobalAuthor[i],
-                    Song.FavoriteSong.GlobalGenre[i],
-                    Song.FavoriteSong.GlobalSongName[i] + ".jpg");
-            }
+            
 
-            if(Song.FavoriteSong.GlobalSongName.Count == 0)
-            {
-                label5.Visible = true;
-            }    
         }
 
         private void btnPlaylist_Click(object sender, EventArgs e)
@@ -120,7 +109,6 @@ namespace Media_Player
             Form3 frm3 = new Form3();
             frm3.TopLevel = false;
             pnlControl.Hide();
-            pnlControlFavorite.Hide();
             if (pnlControl.Visible == false)
             {
                 panel2.Visible = true;
@@ -137,6 +125,18 @@ namespace Media_Player
         private void btnSetting_Click(object sender, EventArgs e)
         {
             indicator.Top = btnSetting.Top + 11;
+            Form7 frm3 = new Form7();
+            frm3.TopLevel = false;
+            pnlControl.Hide();
+            if (pnlControl.Visible == false)
+            {
+                panel2.Visible = true;
+                panel2.Dock = DockStyle.Fill;
+                panel2.Controls.Add(frm3);
+                frm3.BringToFront();
+                frm3.Dock = DockStyle.Fill;
+                frm3.Show();
+            }
         }
         #endregion
 
@@ -144,7 +144,6 @@ namespace Media_Player
         private void Form1_Load(object sender, EventArgs e)
         {
             label3.Text = "No Playing...";
-            label5.Visible = false;
 
             xmlDoc.Load("..//..//ListSong.xml");
 
@@ -181,6 +180,7 @@ namespace Media_Player
         {
             PlayMusic.URL = "C:\\Users\\PC\\Documents\\GitHub\\Music\\MusicApp\\Media Player\\music\\" + SongName + ".wav";
             PlayMusic.Ctlcontrols.play();
+            Song.HistorySong.GlobalSongName.Add(SongName); 
         }
 
         #region MusicControl
@@ -466,7 +466,6 @@ namespace Media_Player
         {
             Form2 frm2 = new Form2(SongName);
             frm2.TopLevel = false;
-            pnlControlFavorite.Hide();
             pnlControl.Hide();
             if (pnlControl.Visible == false)
             {
@@ -480,31 +479,11 @@ namespace Media_Player
         }
         #endregion 
         #region Favorite
-        public void AddFavoriteMusicItem(string name, string author, string album, string image)
-        {
-            var m = new MusicItem()
-            {
-                SongName = name,
-                Author = author,
-                Album = album,
-                ImageSong = Image.FromFile("..//..//image/" + image)
-            };
-
-            pnlControlFavorite.Controls.Add(m);
-            m.OnSelect += (ss, ee) =>
-            {
-                var musicitem = (MusicItem)ss;
-                SongName = m.lblSongName.Text;
-                picPlaying.Image = m.ImageSong;
-                runmp3(SongName);
-                label3.Text = SongName + " - " + m.lblAuthor.Text + " Playing...";
-            };
-        }
+        
         #endregion
+
         #region playlist
 
         #endregion
-
-        
     }
 };

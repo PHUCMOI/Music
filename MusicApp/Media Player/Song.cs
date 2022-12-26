@@ -70,29 +70,6 @@ namespace Media_Player
                 }
             }
 
-            public static List<string> GlobalAuthor
-            {
-                get
-                {
-                    return Author;
-                }
-                set
-                {
-                    Author.Add(value.ToString());
-                }
-            }
-
-            public static List<string> GlobalGenre
-            {
-                get
-                {
-                    return Genre;
-                }
-                set
-                {
-                    Genre.Add(value.ToString());
-                }
-            }
         }
 
         public class FavoriteSong
@@ -140,30 +117,7 @@ namespace Media_Player
 
         public class Track
         {
-            public int TrackID { get; set; }
             public string Name { get; set; }
-            /*
-            public string Artist { get; set; }
-            public string Album { get; set; }
-            public int PlayCount { get; set; }
-            public int SkipCount { get; set; }*/
-        }
-        public class Playlist
-        {
-            private static List<string> PlaylistName = new List<string>();
-
-
-            public static List<string> GlobalPlaylistName
-            {
-                get
-                {
-                    return PlaylistName;
-                }
-                set
-                {
-                    PlaylistName.Add(value.ToString());
-                }
-            }
         }
 
         public static int CheckDuplicate(string SongName)
